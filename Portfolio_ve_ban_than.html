@@ -2,86 +2,87 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio - Cấu trúc hóa bản sắc cá nhân</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phạm Vũ Minh Tâm - Portfolio Bản Sắc Cá Nhân</title>
+    <link rel="stylesheet" href="style-v1.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- 
-      THẺ <header>: 
-      Vai trò Semantic: Đại diện cho phần đầu trang hoặc phần đầu của một section (header của tài liệu). 
-      Thường chứa các nội dung giới thiệu chung, tiêu đề chính của trang, logo và khu vực điều hướng (navigation).
-    -->
-    <header>
-        <h1>Phạm Vũ Minh Tâm</h1>
-        <p>Sinh viên Đại học Lạc Hồng | Portfolio Bản Sắc Cá Nhân</p>
-
-        <!-- 
-          THẺ <nav>: 
-          Vai trò Semantic: Khối điều hướng, chứa các liên kết chính giúp người dùng di chuyển giữa các phần khác nhau của trang web hoặc các trang khác.
-        -->
-        <nav>
-            <ul>
-                <li><a href="#gioi-thieu">Giới thiệu</a></li>
-                <li><a href="#ky-nang">Kỹ năng & Sở thích</a></li>
-                <li><a href="#du-an">Dự án</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <h1>Phạm Vũ Minh Tâm</h1>
+                <p class="subtitle">Sinh viên Đại học Lạc Hồng | Công nghệ & Phát triển Cá nhân</p>
+            </div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                    <li><a href="#ky-nang">Kỹ năng & Sở thích</a></li>
+                    <li><a href="#du-an">Dự án</a></li>
+                    <li><a href="#lien-he">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- 
-      THẺ <main>: 
-      Vai trò Semantic: Chứa nội dung chính, trung tâm và quan trọng nhất của trang web liên quan trực tiếp đến chủ đề (mỗi trang chỉ nên có duy nhất một thẻ <main>).
-    -->
-    <main>
-
-        <!-- 
-          THẺ <section> THỨ NHẤT (Giới thiệu bản thân): 
-          Vai trò Semantic: Phân chia nội dung trang thành các chương, phần có chủ đề độc lập và logic.
-        -->
-        <section id="gioi-thieu">
-            <h2>Giới thiệu bản thân</h2>
-            <p>Chào bạn, tôi là một sinh viên năm nhất đang theo học tại trường Đại học Lạc Hồng. Trang web này thể hiện cấu trúc bản sắc và định hướng phát triển cá nhân của tôi thông qua tư duy lập trình Semantic HTML5.</p>
+    <main class="site-main container">
+        
+        <!-- Phần Giới thiệu -->
+        <section id="gioi-thieu" class="hero-section">
+            <div class="hero-content">
+                <h2>Bản Sắc & Định Hướng</h2>
+                <p>Chào bạn, tôi là sinh viên năm nhất đang theo học tại trường Đại học Lạc Hồng. Trang web này thể hiện cấu trúc bản sắc, tư duy lập trình Semantic HTML5 và hành trình không ngừng khám phá công nghệ, lập trình Python, tối ưu hóa phần cứng cùng các hoạt động tư duy logic.</p>
+            </div>
         </section>
 
-        <!-- 
-          THẺ <section> THỨ HAI (Kỹ năng và sở thích): 
-          Vai trò Semantic: Tiếp tục nhóm các thông tin liên quan với nhau về mặt ngữ nghĩa (trong trường hợp này là nhóm các kỹ năng và sở thích công nghệ).
-        -->
-        <section id="ky-nang">
-            <h2>Kỹ năng & Sở thích</h2>
-            <p>Tôi có niềm đam mê với công nghệ, lập trình Python, thiết kế giao diện và tối ưu hóa các thiết bị phần cứng e-sports. Ngoài ra, việc duy trì các hoạt động tư duy logic như cờ vua và rèn luyện thể chất giúp tôi giữ vững sự cân bằng trong học tập và cuộc sống.</p>
+        <!-- Phần Kỹ năng & Sở thích sử dụng CSS Grid -->
+        <section id="ky-nang" class="skills-section">
+            <h2>Kỹ năng & Sở thích chuyên sâu</h2>
+            <div class="skills-grid">
+                <article class="skill-card">
+                    <div class="card-icon">💻</div>
+                    <h3>Lập trình & Công nghệ</h3>
+                    <p>Thành thạo tư duy thuật toán, lập trình Python, xử lý cấu trúc dữ liệu, khám phá AI (Google AI Studio, NotebookLM) và tối ưu hóa hệ thống.</p>
+                </article>
+                <article class="skill-card">
+                    <div class="card-icon">⌨️</div>
+                    <h3>Phần cứng & Thiết bị</h3>
+                    <p>Yêu thích công nghệ e-sports, bàn phím cơ, switch quang học/từ trường, tinh chỉnh thiết bị ngoại vi và tối ưu hóa không gian làm việc.</p>
+                </article>
+                <article class="skill-card">
+                    <div class="card-icon">♟️</div>
+                    <h3>Tư duy & Thể chất</h3>
+                    <p>Duy trì sự nhạy bén qua môn cờ vua trực tuyến, rèn luyện thể chất với calisthenics, cầu lông và cân bằng nhịp sống năng động.</p>
+                </article>
+            </div>
         </section>
 
-        <!-- 
-          THẺ <section> THỨ BA (Dự án cá nhân): 
-          Vai trò Semantic: Đại diện cho một phần nội dung độc lập tiếp theo, tập trung giới thiệu các dự án đã thực hiện.
-        -->
-        <section id="du-an">
+        <!-- Phần Dự án tiêu biểu sử dụng CSS Grid -->
+        <section id="du-an" class="projects-section">
             <h2>Dự án tiêu biểu</h2>
-            <!-- 
-              THẺ <article>: 
-              Vai trò Semantic: Đại diện cho một nội dung hoàn chỉnh, có ý nghĩa tự thân và có thể phân phối độc lập (ví dụ: một bài viết, một dự án, một thẻ sản phẩm).
-            -->
-            <article>
-                <h3>Ứng dụng AI trong học tập</h3>
-                <p>Nghiên cứu và ứng dụng các công cụ trí tuệ nhân tạo để tối ưu hóa hiệu suất học tập, tự động hóa quy trình làm báo cáo và phân tích dữ liệu.</p>
-            </article>
-
-            <article>
-                <h3>Xây dựng Portfolio cá nhân</h3>
-                <p>Khởi tạo cấu trúc file index.html chuẩn Semantic HTML5, tối ưu hóa bố cục trang web giúp nâng cao khả năng tiếp cận và quản lý mã nguồn.</p>
-            </article>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <span class="project-tag">AI & Học tập</span>
+                    <h3>Ứng dụng AI trong học tập</h3>
+                    <p>Nghiên cứu và ứng dụng trí tuệ nhân tạo để tối ưu hóa hiệu suất học tập, xây dựng báo cáo chuyên sâu và tự động hóa quy trình phân tích dữ liệu.</p>
+                </article>
+                <article class="project-card">
+                    <span class="project-tag">Web Development</span>
+                    <h3>Hệ thống Portfolio Cá nhân</h3>
+                    <p>Thiết kế cấu trúc mã nguồn chuẩn Semantic HTML5 kết hợp CSS Grid & Flexbox, tối ưu khả năng tiếp cận và quản lý dự án thông minh.</p>
+                </article>
+            </div>
         </section>
 
     </main>
 
-    <!-- 
-      THẺ <footer>: 
-      Vai trò Semantic: Đại diện cho phần chân trang của tài liệu hoặc của một section. Thường chứa thông tin bản quyền, thông tin liên hệ, tác giả hoặc các liên kết phụ trợ.
-    -->
-    <footer>
-        <p>&copy; 2026 Phạm Vũ Minh Tâm. Được xây dựng bằng tư duy Semantic HTML5.</p>
-        <p>Liên hệ: <a href="mailto:contact@minhtam.internal">Gửi email</a></p>
+    <footer id="lien-he" class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Phạm Vũ Minh Tâm. Xây dựng bằng tư duy Semantic HTML5 & CSS hiện đại.</p>
+            <p>Liên hệ hợp tác: <a href="mailto:contact@minhtam.internal">Gửi email trực tiếp</a></p>
+        </div>
     </footer>
 
 </body>
