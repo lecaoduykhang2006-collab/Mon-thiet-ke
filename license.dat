@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio cá nhân</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="portfolio">
+
+    <header class="header">
+      <h1>Nguyễn Văn A</h1>
+      <p>Frontend Developer</p>
+    </header>
+
+    <aside class="sidebar">
+      <h2>Giới thiệu</h2>
+      <p>
+        Tôi là sinh viên yêu thích phát triển giao diện web
+        và thiết kế trải nghiệm người dùng.
+      </p>
+    </aside>
+
+    <main class="content">
+
+      <section class="section">
+        <h2>Kỹ năng</h2>
+
+        <div class="skills">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>React</span>
+          <span>Git</span>
+          <span>Figma</span>
+          <span>Responsive Design</span>
+        </div>
+      </section>
+
+      <section class="section projects">
+        <h2>Dự án</h2>
+
+        <article class="project">
+          <h3>Website bán hàng</h3>
+          <p>Thiết kế giao diện responsive bằng HTML và CSS.</p>
+        </article>
+
+        <article class="project">
+          <h3>Ứng dụng quản lý công việc</h3>
+          <p>Ứng dụng quản lý công việc sử dụng JavaScript.</p>
+        </article>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Nguyễn Văn A</p>
+    </footer>
+
+  </div>
+</body>
+</html>
+	HOSTID=b06ebf84d10d SIGN="0C8D 31B5 AD64 E1C4 C6F9 1540 5072 \
+	C53D 386C 7A5E 09F0 6FE0 EBAB A42C C139 015B 44B1 D3E6 8F4B \
+	CD45 FAFF B30C 77BE FA54 955D 022F 0663 87C2 26B0 73
