@@ -1,0 +1,386 @@
+/* =========================
+   CÀI ĐẶT CHUNG
+   ========================= */
+
+   * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 30px;
+
+    min-height: 100vh;
+
+    background: #f4f7fb;
+    color: #222;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 40px 20px;
+
+    background: #1e3a8a;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+header p {
+    margin: 0;
+    font-size: 20px;
+}
+
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin: 10px 0 0 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+
+/* =========================
+   MAIN - CSS GRID
+   ========================= */
+
+main {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
+
+    gap: 30px;
+
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================
+   GIỚI THIỆU
+   ========================= */
+
+#about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    grid-column: 1;
+    grid-row: 1;
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#about h2 {
+    margin: 0;
+
+    color: #1e3a8a;
+    font-size: 28px;
+}
+
+#about p {
+    margin: 0;
+
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   DỰ ÁN
+   ========================= */
+
+#projects {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+
+    gap: 25px;
+
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#projects > h2 {
+    grid-column: 1 / 3;
+
+    margin: 0;
+
+    color: #1e3a8a;
+    font-size: 28px;
+}
+
+
+/* =========================
+   CARD DỰ ÁN
+   ========================= */
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    gap: 15px;
+
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+article h3 {
+    margin: 0;
+
+    color: #1e3a8a;
+    font-size: 21px;
+}
+
+article p {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   HÌNH ẢNH
+   ========================= */
+
+figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0;
+}
+
+figure img {
+    display: block;
+
+    width: 100%;
+    max-width: 500px;
+
+    border-radius: 8px;
+}
+
+figcaption {
+    font-size: 14px;
+    text-align: center;
+}
+
+
+/* =========================
+   ASIDE
+   ========================= */
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    gap: 15px;
+
+    grid-column: 2;
+    grid-row: 1 / 3;
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+aside h2 {
+    margin: 0;
+
+    color: #1e3a8a;
+    font-size: 28px;
+}
+
+aside h3 {
+    margin: 15px 0 0 0;
+
+    color: #2563eb;
+    font-size: 20px;
+}
+
+aside ul {
+    margin: 0;
+    padding-left: 25px;
+}
+
+aside li {
+    margin-bottom: 8px;
+
+    font-size: 16px;
+}
+
+aside p {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    padding: 25px 40px;
+
+    background: #1e3a8a;
+    color: white;
+}
+
+footer p {
+    margin: 0;
+    font-size: 15px;
+}
+
+footer a {
+    color: white;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 800px) {
+
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    #about {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    #projects {
+        grid-column: 1;
+        grid-row: 2;
+
+        grid-template-columns: 1fr;
+    }
+
+    #projects > h2 {
+        grid-column: 1;
+    }
+
+    aside {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    footer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    main {
+        width: 94%;
+    }
+
+    article {
+        padding: 20px;
+    }
+
+    aside {
+        padding: 20px;
+    }
+}
