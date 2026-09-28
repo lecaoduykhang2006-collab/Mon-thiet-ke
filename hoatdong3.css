@@ -1,0 +1,36 @@
+/* Thiết lập giao diện cơ bản cho các box (để dễ nhìn) */
+.service-item {
+  background-color: #4CAF50;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 8px;
+  font-family: sans-serif;
+}
+
+/* 
+  1. Mặc định (Mobile): Màn hình < 768px có 1 cột
+*/
+.services-container {
+  display: grid;
+  gap: 20px; /* Khai báo gap một lần duy nhất cho toàn bộ các màn hình */
+  grid-template-columns: 1fr; 
+}
+
+/* 
+  2. Tablet: Màn hình từ 768px đến 1024px có 2 cột
+*/
+@media (min-width: 768px) {
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 
+  3. Desktop: Màn hình > 1024px (từ 1025px trở lên) có 4 cột
+*/
+@media (min-width: 1025px) {
+  .services-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
