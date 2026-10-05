@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lê Cao Duy Khang | AI Engineer & Machine Learning Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Thư viện AOS CSS qua CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =======================================================================
+       BÀI 5: CHECKBOX HACK ĐIỀU KHIỂN HAMBURGER MENU (KHÔNG CẦN JAVASCRIPT)
+       ======================================================================= -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Mở đóng menu điều hướng">
+
+  <!-- =======================================================================
+       THANH ĐIỀU HƯỚNG (NAVBAR) & ICON HAMBURGER BIẾN THÀNH 'X'
+       ======================================================================= -->
+  <nav class="navbar">
+    <a href="#hero" class="nav-brand">
+      <div class="brand-dot"></div>
+      <span>DuyKhang.ai</span>
+    </a>
+
+    <!-- Nút Hamburger biến hình dấu X (Bài 5) -->
+    <label for="nav-toggle" class="hamburger-btn" aria-label="Toggle Menu">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </label>
+
+    <ul class="nav-links">
+      <li><a href="#about">Về tôi</a></li>
+      <li><a href="#education">Nghiên cứu</a></li>
+      <li><a href="#skills">Kỹ năng AI</a></li>
+      <li><a href="#projects">Mô hình AI</a></li>
+      <li><a href="#hobbies">Khám phá</a></li>
+      <li><a href="#friends">Chuyên gia AI (3D Flip)</a></li>
+      <li><a href="#contact">Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <!-- =======================================================================
+       PHẦN 1: HERO SECTION & BÀI 3: HIỆU ỨNG GÕ PHÍM AI (PURE CSS TYPING EFFECT)
+       ======================================================================= -->
+  <header class="section hero-section" id="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <!-- Avatar AI chuyên gia máy học -->
+      <div class="avatar-wrapper" data-aos="zoom-in" data-aos-delay="100">
+        <img src="avatar.jpg" alt="Lê Cao Duy Khang - AI Engineer & Machine Learning Specialist" class="avatar-img">
+        <div class="avatar-badge" title="AI Model Active • GPU Ready"></div>
+      </div>
+
+      <span class="badge-tag" data-aos="fade-down" data-aos-delay="150">⚡ Artificial Intelligence & Deep Learning</span>
+      <h1 class="hero-name" data-aos="fade-up" data-aos-delay="200">Lê Cao Duy Khang</h1>
+
+      <!-- BÀI 3: DÒNG CHỮ HIỆU ỨNG GÕ PHÍM CSS THUẦN (STEPS & KEYFRAMES) -->
+      <div class="typing-wrapper" data-aos="fade-up" data-aos-delay="250">
+        <div class="typing-text">Tôi là một Kỹ Sư Trí Tuệ Nhân Tạo (AI)...</div>
+      </div>
+
+      <p class="hero-bio" data-aos="fade-up" data-aos-delay="300">
+        Chuyên sâu nghiên cứu và xây dựng các mô hình <strong>Deep Learning, Generative AI (LLMs), Computer
+          Vision</strong> và kiến trúc hệ thống <strong>MLOps</strong> tối ưu hóa thời gian thực trên GPU Clusters.
+      </p>
+
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="350">
+        <a href="#projects" class="btn-primary">⚡ Khám phá mô hình AI</a>
+        <a href="#friends" class="btn-secondary">🤝 Kết nối chuyên gia</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =======================================================================
+       PHẦN 2: VỀ TÔI & ĐỊNH HƯỚNG TRÍ TUỆ NHÂN TẠO (ABOUT ME)
+       ======================================================================= -->
+  <section class="section" id="about" data-aos="fade-up">
+    <div class="section-header">
+      <span class="badge-tag">Phần 2 • Tầm nhìn & Sứ mệnh</span>
+      <h2 class="section-title">Về Bản Thân & Triết Lý AI</h2>
+      <p class="section-desc">Khai phá tiềm năng vô hạn của thuật toán máy học và kiến tạo giá trị nhân văn qua công
+        nghệ số.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card" data-aos="fade-right" data-aos-delay="100">
+        <h3>🧠 Định hướng nghiên cứu AI</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+          Tôi đam mê giải quyết các bài toán phức tạp trong thế giới thực thông qua <strong>Mạng Nơ-ron Nhân tạo (Neural
+            Networks)</strong>, <strong>Xử lý ngôn ngữ tự nhiên (NLP)</strong> và <strong>Thị giác máy tính (Computer
+            Vision)</strong>.
+        </p>
+        <p style="color: var(--text-muted);">
+          Triết lý: <em>"Phát triển Trí tuệ Nhân tạo có đạo đức, minh bạch (Explainable AI) và lấy con người làm trung
+            tâm."</em>
+        </p>
+      </div>
+      <div class="about-card" data-aos="fade-left" data-aos-delay="200">
+        <h3>📊 Hồ sơ chuyên môn AI</h3>
+        <ul class="info-list">
+          <li><span class="info-label">Họ và tên:</span> <span class="info-val">Lê Cao Duy Khang</span></li>
+          <li><span class="info-label">Chuyên môn chính:</span> <span class="info-val">AI Engineer & Data
+              Scientist</span></li>
+          <li><span class="info-label">Lĩnh vực trọng tâm:</span> <span class="info-val">Generative AI, LLMs &
+              Vision</span></li>
+          <li><span class="info-label">Trạng thái:</span> <span class="info-val" style="color: var(--success);">Đang
+              nghiên cứu & Nhận dự án</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       PHẦN 3: HỌC VẤN & NGHIÊN CỨU KHOA HỌC (EDUCATION & AI RESEARCH)
+       ======================================================================= -->
+  <section class="section" id="education" data-aos="fade-up">
+    <div class="section-header">
+      <span class="badge-tag">Phần 3 • Hành trình nghiên cứu</span>
+      <h2 class="section-title">Học Vấn & Dấu Mốc Nghiên Cứu</h2>
+      <p class="section-desc">Quá trình đào tạo chuyên sâu về Khoa học Máy tính và Trí tuệ Nhân tạo ứng dụng.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2023 - HIỆN TẠI</div>
+        <h4 class="timeline-title">Cử nhân Trí Tuệ Nhân Tạo & Khoa Học Dữ Liệu</h4>
+        <p class="timeline-desc">Nghiên cứu kiến trúc Transformer, Mạng nơ-ron tích chập (CNN), Học tăng cường
+          (Reinforcement Learning) và Đại số tuyến tính tối ưu hóa mô hình AI.</p>
+      </div>
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2024 - 2025</div>
+        <h4 class="timeline-title">Chứng chỉ Chuyên sâu Deep Learning & MLOps Pipeline</h4>
+        <p class="timeline-desc">Hoàn thành các dự án thực chiến về Fine-tuning Large Language Models (LLaMA, GPT), Huấn
+          luyện mô hình phân tán trên GPU Clusters và Triển khai MLOps trên Cloud.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       PHẦN 4: KỸ NĂNG CHUYÊN SÂU AI & BÀI 6: SKILL BAR ANIMATION
+       ======================================================================= -->
+  <section class="section" id="skills" data-aos="fade-up">
+    <div class="section-header">
+      <span class="badge-tag">Phần 4 • Năng lực kỹ thuật (Bài 6)</span>
+      <h2 class="section-title">Kỹ Năng AI & Công Nghệ Cốt Lõi</h2>
+      <p class="section-desc">Bộ công cụ frameworks và ngôn ngữ thuật toán tôi sử dụng trong nghiên cứu & phát triển AI.
+      </p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="100">
+        <div class="skill-header">
+          <span>Python / PyTorch & TensorFlow</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="--target-width: 95%;"></div>
+        </div>
+      </div>
+      <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="200">
+        <div class="skill-header">
+          <span>Large Language Models & GenAI / Prompt Engineering</span>
+          <span>92%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="--target-width: 92%;"></div>
+        </div>
+      </div>
+      <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="300">
+        <div class="skill-header">
+          <span>Computer Vision (OpenCV, YOLO, CNNs)</span>
+          <span>88%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="--target-width: 88%;"></div>
+        </div>
+      </div>
+      <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="400">
+        <div class="skill-header">
+          <span>MLOps & Deployment (FastAPI, Docker, TensorRT)</span>
+          <span>85%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="--target-width: 85%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       BÀI 4: PARALLAX IMAGE BANNER (AI NEURAL NETWORK THEME)
+       ======================================================================= -->
+  <div class="parallax-banner" data-aos="fade-up">
+    <div class="parallax-content">
+      <span class="badge-tag" style="background: rgba(6, 182, 212, 0.2); color: #67e8f9;">Bài 4 • AI Parallax
+        Matrix</span>
+      <h2 class="parallax-title">"Kiến tạo tương lai với Trí Tuệ Nhân Tạo thế hệ mới"</h2>
+      <p class="parallax-subtitle">Kết hợp toán học, dữ liệu lớn và thuật toán Deep Learning để mở ra những đột phá công
+        nghệ.</p>
+      <a href="#contact" class="btn-primary">🚀 Bắt đầu hợp tác nghiên cứu</a>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       PHẦN 5: DỰ ÁN AI TIÊU BIỂU (AI PROJECTS PORTFOLIO)
+       ======================================================================= -->
+  <section class="section" id="projects" data-aos="fade-up">
+    <div class="section-header">
+      <span class="badge-tag">Phần 5 • Sản phẩm & Mô hình AI</span>
+      <h2 class="section-title">Dự Án Trí Tuệ Nhân Tạo Tiêu Biểu</h2>
+      <p class="section-desc">Các mô hình AI thực tế đã được huấn luyện, tối ưu và ứng dụng trong sản xuất.</p>
+    </div>
+    <div class="projects-grid">
+      <!-- Dự án AI 1 -->
+      <div class="project-card" data-aos="flip-left" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=500&auto=format&fit=crop&q=80"
+          alt="Computer Vision AI" class="project-img">
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">YOLOv8</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">TensorRT</span>
+          </div>
+          <h3 class="project-title">Hệ Thống Thị Giác AI Nhận Diện Thời Gian Thực</h3>
+          <p class="project-desc">Mô hình thị giác máy tính nhận diện và phân loại đa đối tượng với tốc độ 60 FPS trên
+            Edge Device, độ chính xác mAP@0.5 đạt 94.2%.</p>
+        </div>
+      </div>
+
+      <!-- Dự án AI 2 -->
+      <div class="project-card" data-aos="flip-right" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=80"
+          alt="Generative AI LLM" class="project-img">
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Generative AI</span>
+            <span class="tag">LLMs (LLaMA-3)</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">RAG</span>
+          </div>
+          <h3 class="project-title">Trợ Lý Đa Tác Vụ GenAI & Phân Tích Dữ Liệu RAG</h3>
+          <p class="project-desc">Hệ thống hỏi đáp thông minh tích hợp Retrieval-Augmented Generation (RAG) giúp truy
+            xuất tài liệu chuyên ngành với độ chuẩn xác cao.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       PHẦN 6: SỞ THÍCH & ĐAM MÊ KHÁM PHÁ AI (AI EXPLORATIONS)
+       ======================================================================= -->
+  <section class="section" id="hobbies" data-aos="fade-up">
+    <div class="section-header">
+      <span class="badge-tag">Phần 6 • Đam mê & Khám phá</span>
+      <h2 class="section-title">Sở Thích & Hướng Nghiên Cứu Mở Rộng</h2>
+      <p class="section-desc">Những hoạt động giúp tôi liên tục cập nhật công nghệ và nuôi dưỡng cảm hứng sáng tạo.</p>
+    </div>
+    <div class="hobbies-grid">
+      <div class="hobby-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="hobby-icon">📄</div>
+        <div class="hobby-name">Đọc Báo Cáo Khoa Học (arXiv)</div>
+        <div class="hobby-desc">Liên tục theo dõi các nghiên cứu mới nhất về Diffusion Models và Transformer
+          Architectures.</div>
+      </div>
+      <div class="hobby-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="hobby-icon">🤖</div>
+        <div class="hobby-name">Robot Tự Hành & Edge AI</div>
+        <div class="hobby-desc">Lập trình thị giác nhúng cho xe tự hành mini và thiết bị IoT thông minh.</div>
+      </div>
+      <div class="hobby-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="hobby-icon">🎮</div>
+        <div class="hobby-name">Game AI & Q-Learning</div>
+        <div class="hobby-desc">Thử nghiệm các thuật toán học tăng cường (Reinforcement Learning) tự chơi game.</div>
+      </div>
+      <div class="hobby-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="hobby-icon">☕</div>
+        <div class="hobby-name">Cà Phê & Data Storytelling</div>
+        <div class="hobby-desc">Trực quan hóa dữ liệu và diễn giải các phân tích toán học một cách trực quan, dễ hiểu.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       PHẦN 7: MẠNG LƯỚI CHUYÊN GIA AI & BÀI 2: 3D CARD FLIP EFFECT
+       ======================================================================= -->
+  <section class="section" id="friends" data-aos="fade-up">
+    <div class="section-header">
+      <span class="badge-tag">Phần 7 • Mạng lưới nghiên cứu (Bài 2: 3D Card Flip)</span>
+      <h2 class="section-title">Chuyên Gia & Đồng Nghiệp AI</h2>
+      <p class="section-desc">Rê chuột vào thẻ để trải nghiệm hiệu ứng <strong>lật 3D 180°</strong> và bấm <strong>"Gửi
+          tin nhắn"</strong> trao đổi chuyên môn.</p>
+    </div>
+
+    <div class="friends-grid">
+      <!-- Chuyên gia 1 (3D Flip Card) -->
+      <div class="flip-card-container" data-aos="zoom-in" data-aos-delay="100">
+        <div class="flip-card-inner">
+          <!-- Mặt trước -->
+          <div class="flip-card-front">
+            <div class="friend-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80"
+                alt="TS. Trần Mai Linh" class="friend-avatar">
+              <div class="status-dot"></div>
+            </div>
+            <div class="friend-name">TS. Trần Mai Linh</div>
+            <div class="friend-role">NLP Research Scientist</div>
+            <div class="flip-hint">🔄 Rê chuột để xem thông tin</div>
+          </div>
+          <!-- Mặt sau (Lật 180 độ) -->
+          <div class="flip-card-back">
+            <div class="flip-back-title">TS. Trần Mai Linh</div>
+            <div class="friend-quote">"Nghiên cứu các mô hình ngôn ngữ lớn (LLMs) hiểu tiếng Việt sâu sắc và tự nhiên."
+            </div>
+            <button class="btn-open-msg" data-name="TS. Trần Mai Linh" data-role="NLP Research Scientist"
+              data-avatar="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80"
+              type="button">
+              💬 Gửi tin nhắn trao đổi
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chuyên gia 2 (3D Flip Card) -->
+      <div class="flip-card-container" data-aos="zoom-in" data-aos-delay="200">
+        <div class="flip-card-inner">
+          <!-- Mặt trước -->
+          <div class="flip-card-front">
+            <div class="friend-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+                alt="Nguyễn Minh Quân" class="friend-avatar">
+              <div class="status-dot"></div>
+            </div>
+            <div class="friend-name">Nguyễn Minh Quân</div>
+            <div class="friend-role">MLOps & Cloud Engineer</div>
+            <div class="flip-hint">🔄 Rê chuột để xem thông tin</div>
+          </div>
+          <!-- Mặt sau -->
+          <div class="flip-card-back">
+            <div class="flip-back-title">Nguyễn Minh Quân</div>
+            <div class="friend-quote">"Tối ưu hóa pipeline huấn luyện phân tán và giám sát mô hình AI trong sản xuất."
+            </div>
+            <button class="btn-open-msg" data-name="Nguyễn Minh Quân" data-role="MLOps & Cloud Engineer"
+              data-avatar="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+              type="button">
+              💬 Gửi tin nhắn trao đổi
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chuyên gia 3 (3D Flip Card) -->
+      <div class="flip-card-container" data-aos="zoom-in" data-aos-delay="300">
+        <div class="flip-card-inner">
+          <!-- Mặt trước -->
+          <div class="flip-card-front">
+            <div class="friend-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80"
+                alt="Phạm Thu Hà" class="friend-avatar">
+              <div class="status-dot"></div>
+            </div>
+            <div class="friend-name">Phạm Thu Hà</div>
+            <div class="friend-role">AI Product Lead</div>
+            <div class="flip-hint">🔄 Rê chuột để xem thông tin</div>
+          </div>
+          <!-- Mặt sau -->
+          <div class="flip-card-back">
+            <div class="flip-back-title">Phạm Thu Hà</div>
+            <div class="friend-quote">"Thương mại hóa giải pháp Trí Tuệ Nhân Tạo giải quyết bài toán vận hành doanh
+              nghiệp."</div>
+            <button class="btn-open-msg" data-name="Phạm Thu Hà" data-role="AI Product Lead"
+              data-avatar="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80"
+              type="button">
+              💬 Gửi tin nhắn trao đổi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       MODAL / POPUP GỬI TIN NHẮN (HIỆN RA KHI BẤM NHẮN TIN)
+       ======================================================================= -->
+  <div class="modal-overlay" id="messageModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="modalCloseBtn" type="button">&times;</button>
+
+      <div class="modal-header">
+        <img src="" alt="Avatar người nhận" class="modal-receiver-avatar" id="modalAvatar">
+        <div class="modal-receiver-info">
+          <h4 id="modalReceiverName">Tên Người Nhận</h4>
+          <p id="modalReceiverRole">● Đang trực tuyến</p>
+        </div>
+      </div>
+
+      <form id="msgForm">
+        <div class="form-group">
+          <label class="form-label" for="senderName">Họ và tên của bạn:</label>
+          <input type="text" id="senderName" class="form-input" value="Lê Cao Duy Khang" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="msgContent">Nội dung tin nhắn / Đề xuất nghiên cứu:</label>
+          <textarea id="msgContent" class="form-textarea"
+            placeholder="Nhập nội dung thảo luận về mô hình AI hoặc ý tưởng hợp tác..." required></textarea>
+        </div>
+
+        <!-- NÚT BẤM CẢM XÚC GỬI TIN NHẮN (CUBIC-BEZIER & ACTIVE SCALE) -->
+        <button class="btn-send" id="btnSendMsg" type="submit">
+          <span id="btnText">Gửi tin nhắn</span>
+          <div class="modal-spinner" id="modalSpinner"></div>
+          <svg id="btnIcon" viewBox="0 0 24 24">
+            <path d="M22 2L11 13"></path>
+            <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+          </svg>
+        </button>
+
+        <div class="modal-status-text" id="modalStatusText"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       PHẦN 8: LIÊN HỆ & CHÂN TRANG (AI CONTACT & FOOTER)
+       ======================================================================= -->
+  <section class="section" id="contact" data-aos="fade-up">
+    <div class="section-header">
+      <span class="badge-tag">Phần 8 • Kết nối nghiên cứu</span>
+      <h2 class="section-title">Liên Hệ & Hợp Tác AI</h2>
+      <p class="section-desc">Sẵn sàng trao đổi về các dự án Học Máy, Tích hợp Generative AI và Nghiên cứu Khoa học.</p>
+    </div>
+    <div class="contact-box" data-aos="zoom-in" data-aos-delay="100">
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        Bạn có nhu cầu tư vấn giải pháp AI hoặc muốn cộng tác nghiên cứu học thuật? Hãy gửi tin nhắn qua mục
+        <strong>Chuyên gia AI</strong> hoặc liên hệ trực tiếp:
+      </p>
+      <div class="contact-links">
+        <a href="mailto:duykhang.ai@example.com" class="contact-item">
+          ✉️ duykhang.ai@example.com
+        </a>
+        <a href="tel:+84901234567" class="contact-item">
+          📞 +84 901 234 567
+        </a>
+        <a href="#hero" class="contact-item">
+          🌐 duykhang-ai.vn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       BÀI 1: FLOATING ACTION BUTTON (FAB) VỚI HIỆU ỨNG PHẬP PHỒNG (PULSE RADAR)
+       ======================================================================= -->
+  <div class="fab-container" title="Liên hệ nhanh">
+    <a href="#contact" class="fab-btn" aria-label="Nút Liên hệ nhanh">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+        </path>
+      </svg>
+    </a>
+    <span class="fab-tooltip">Liên hệ nhanh 💬</span>
+  </div>
+
+  <!-- CHÂN TRANG -->
+  <footer class="footer">
+    <p>© 2026 <strong>Lê Cao Duy Khang</strong> • AI Engineer & Machine Learning Specialist. Thiết kế với
+      Micro-interactions & CSS Animation.
+    </p>
+  </footer>
+
+  <!-- Thư viện AOS JavaScript qua CDN -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <!-- SCRIPT XỬ LÝ SỰ KIỆN GỬI TIN NHẮN & KHỞI TẠO AOS -->
+  <script>
+    // Khởi tạo AOS Animation On Scroll
+    AOS.init({
+      duration: 800,
+      once: false,
+      offset: 80,
+      easing: 'ease-out-cubic'
+    });
+
+    const messageModal = document.getElementById('messageModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalAvatar = document.getElementById('modalAvatar');
+    const modalReceiverName = document.getElementById('modalReceiverName');
+    const modalReceiverRole = document.getElementById('modalReceiverRole');
+    const msgForm = document.getElementById('msgForm');
+    const btnSendMsg = document.getElementById('btnSendMsg');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    const modalSpinner = document.getElementById('modalSpinner');
+    const modalStatusText = document.getElementById('modalStatusText');
+
+    // Mở modal khi bấm "Gửi tin nhắn" ở thẻ bạn bè / chuyên gia AI
+    const openMsgButtons = document.querySelectorAll('.btn-open-msg');
+    openMsgButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-name');
+        const role = btn.getAttribute('data-role');
+        const avatar = btn.getAttribute('data-avatar');
+
+        modalReceiverName.textContent = name;
+        modalReceiverRole.textContent = `● ${role} (Đang trực tuyến)`;
+        modalAvatar.src = avatar;
+        modalStatusText.textContent = '';
+        msgForm.reset();
+        document.getElementById('senderName').value = 'Lê Cao Duy Khang';
+
+        messageModal.classList.add('active');
+      });
+    });
+
+    // Đóng modal
+    function closeModal() {
+      messageModal.classList.remove('active');
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    // Đóng khi click ra ngoài vùng modal
+    messageModal.addEventListener('click', (e) => {
+      if (e.target === messageModal) closeModal();
+    });
+
+    // Xử lý gửi tin nhắn với animation loading feedback
+    msgForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      btnText.textContent = 'Đang gửi...';
+      btnIcon.style.display = 'none';
+      modalSpinner.style.display = 'inline-block';
+      btnSendMsg.disabled = true;
+      modalStatusText.style.color = '#67e8f9';
+      modalStatusText.textContent = 'Đang kết nối hệ thống và chuyển phát tin nhắn...';
+
+      setTimeout(() => {
+        btnText.textContent = 'Đã gửi thành công!';
+        modalSpinner.style.display = 'none';
+        modalStatusText.style.color = '#34d399';
+        modalStatusText.textContent = `✅ Tin nhắn đã được gửi tới ${modalReceiverName.textContent}!`;
+
+        setTimeout(() => {
+          btnText.textContent = 'Gửi tin nhắn';
+          btnIcon.style.display = 'inline-block';
+          btnSendMsg.disabled = false;
+          closeModal();
+        }, 1400);
+      }, 1200);
+    });
+  </script>
+</body>
+
+</html>
