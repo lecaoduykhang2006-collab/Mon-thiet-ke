@@ -1,0 +1,193 @@
+/* ==========================================================
+   HOẠT ĐỘNG 1 & 4: DESIGN SYSTEM & CSS VARIABLES (:root)
+   Trích xuất toàn bộ mã màu và thông số khoảng cách vào biến
+   ========================================================== */
+:root {
+    /* 2 màu chủ đạo & màu nền */
+    --primary-color: #2563eb;    /* Xanh dương chủ đạo (AI / Tech theme) */
+    --secondary-color: #1e293b;  /* Đen Navy / Xám đậm cho Header/Footer */
+    --bg-color: #f8fafc;         /* Màu nền tổng thể trang web */
+    --card-bg: #ffffff;          /* Màu nền khối nội dung */
+    --border-color: #e2e8f0;     /* Màu viền khung */
+
+    /* 3 mức màu xám cho text */
+    --text-main: #334155;        /* Xám đậm cho nội dung chính */
+    --text-muted: #64748b;       /* Xám vừa cho mô tả phụ */
+    --text-light: #94a3b8;       /* Xám nhạt cho chữ mờ */
+
+    /* Hệ thống khoảng cách (Spacing Scale) */
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+}
+
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--space-md);
+}
+
+header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+}
+
+/* ==========================================================
+   HOẠT ĐỘNG 2: RESPONSIVE PORTFOLIO LAYOUT (Desktop Grid)
+   ========================================================== */
+.portfolio-container {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Sidebar cố định 250px, Main chiếm phần còn lại */
+    gap: var(--space-lg);
+    max-width: 1200px;
+    margin: var(--space-lg) auto;
+    padding: 0 var(--space-md);
+}
+
+aside {
+    background-color: var(--card-bg);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    height: fit-content;
+}
+
+aside h3 {
+    color: var(--secondary-color);
+    margin-bottom: var(--space-sm);
+}
+
+aside p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+main {
+    background-color: var(--card-bg);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+section {
+    margin-bottom: var(--space-xl);
+}
+
+section h1, section h2 {
+    color: var(--secondary-color);
+    margin-bottom: var(--space-sm);
+}
+
+section p {
+    color: var(--text-muted);
+}
+
+/* ==========================================================
+   HOẠT ĐỘNG 3: RESPONSIVE BREAKPOINT CHALLENGE (.services-container)
+   Mặc định Desktop (> 1024px): 4 cột, gap: 20px
+   ========================================================== */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: var(--space-md);
+}
+
+.service-card {
+    background-color: var(--card-bg);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-sm);
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    text-align: center;
+    padding: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+footer nav {
+    margin-top: var(--space-sm);
+}
+
+footer nav a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+footer nav a:hover {
+    color: #ffffff;
+}
+
+/* ==========================================================
+   MEDIA QUERIES (Điểm gãy tối ưu di động và máy tính bảng)
+   ========================================================== */
+
+/* Điểm gãy 1: Tablet (768px - 1024px) -> Services hiển thị 2 cột */
+@media screen and (max-width: 1024px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Điểm gãy 2: Mobile (< 768px) -> Chuyển Portfolio thành 1 cột, dịch chuyển sidebar và Services về 1 cột */
+@media screen and (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: 1fr; /* Biến đổi bố cục đa cột thành 1 cột duy nhất */
+        gap: var(--space-md);
+    }
+
+    aside {
+        order: -1; /* Chuyển sidebar lên đầu trang trên thiết bị di động */
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+
+    .services-container {
+        grid-template-columns: 1fr; /* Services chuyển thành 1 cột trên Mobile */
+    }
+}
