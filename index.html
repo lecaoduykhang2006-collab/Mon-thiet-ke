@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description"
+    content="GourmetWorld - Cổng thông tin khám phá tinh hoa văn hóa ẩm thực thế giới. Trải nghiệm những món ăn trứ danh, đầu bếp Michelin huyền thoại và nghệ thuật ẩm thực 5 châu.">
+  <meta name="theme-color" content="#0a0908">
+  <title>GourmetWorld | Tinh Hoa Văn Hóa Ẩm Thực Thế Giới</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Thư viện AOS CSS qua CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =======================================================================
+       BÀI 5: CHECKBOX HACK ĐIỀU KHIỂN HAMBURGER MENU (KHÔNG CẦN JAVASCRIPT)
+       ======================================================================= -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Mở đóng menu điều hướng">
+
+  <!-- =======================================================================
+       THANH ĐIỀU HƯỚNG (NAVBAR) & ICON HAMBURGER BIẾN THÀNH 'X'
+       ======================================================================= -->
+  <nav class="navbar">
+    <a href="#hero" class="nav-brand">
+      <div class="brand-dot"></div>
+      <span>GourmetWorld</span>
+    </a>
+
+    <!-- Nút Hamburger biến hình dấu X (Bài 5) -->
+    <label for="nav-toggle" class="hamburger-btn" aria-label="Toggle Menu">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </label>
+
+    <ul class="nav-links">
+      <li><a href="#about">Triết lý ẩm thực</a></li>
+      <li><a href="#heritage">Di sản thế giới</a></li>
+      <li><a href="#ranking">Bản đồ vị giác</a></li>
+      <li><a href="#dishes">Món ăn biểu tượng</a></li>
+      <li><a href="#art">Nghệ thuật thưởng thức</a></li>
+      <li><a href="#chefs">Bếp trưởng 3D Flip</a></li>
+      <li><a href="#contact">Đặt bàn & Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <!-- =======================================================================
+       PHẦN 1: HERO SECTION & BÀI 3: HIỆU ỨNG GÕ PHÍM (PURE CSS TYPING EFFECT)
+       ======================================================================= -->
+  <header class="section hero-section" id="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <!-- Ảnh món ăn Michelin nghệ thuật -->
+      <div class="avatar-wrapper" data-aos="zoom-in" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&auto=format&fit=crop&q=80"
+          alt="Tinh hoa nghệ thuật ẩm thực thế giới" class="avatar-img">
+        <div class="avatar-badge" title="Michelin Star • Haute Cuisine Heritage"></div>
+      </div>
+
+      <span class="badge-tag" data-aos="fade-down" data-aos-delay="150">⚜️ Di Sản Ẩm Thực Thế Giới • Michelin Guide
+        Heritage</span>
+      <h1 class="hero-name" data-aos="fade-up" data-aos-delay="200">Hành Trình Vị Giác 5 Châu</h1>
+
+      <!-- BÀI 3: DÒNG CHỮ HIỆU ỨNG GÕ PHÍM CSS THUẦN (STEPS & KEYFRAMES) -->
+      <div class="typing-wrapper" data-aos="fade-up" data-aos-delay="250">
+        <div class="typing-text">Khám phá tinh hoa văn hóa ẩm thực thế giới...</div>
+      </div>
+
+      <p class="hero-bio" data-aos="fade-up" data-aos-delay="300">
+        Đắm mình trong bản giao hưởng vị giác bất tận từ những kinh đô ẩm thực trứ danh: <strong>Pháp, Ý, Nhật Bản,
+          Việt Nam và Tây Ban Nha</strong>. Tôn vinh cội nguồn nguyên liệu bản địa và kỹ nghệ nấu nướng thượng thừa của
+        nhân loại.
+      </p>
+
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="350">
+        <a href="#dishes" class="btn-primary">🍽️ Khám phá món ăn biểu tượng</a>
+        <a href="#chefs" class="btn-secondary">👨‍🍳 Bậc thầy ẩm thực 3D</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG CHÍNH (SEMANTIC MAIN TAG CHO CHUẨN W3C) -->
+  <main id="main">
+
+    <!-- =======================================================================
+       PHẦN 2: TRIẾT LÝ ẨM THỰC & SỨ MỆNH VĂN HÓA (ABOUT GASTRONOMY)
+       ======================================================================= -->
+    <section class="section" id="about" data-aos="fade-up">
+      <div class="section-header">
+        <span class="badge-tag">Phần 2 • Tinh hoa & Sứ mệnh</span>
+        <h2 class="section-title">Triết Lý Ẩm Thực & Cội Nguồn Vị Giác</h2>
+        <p class="section-desc">Ẩm thực không đơn thuần là món ăn, đó là tấm gương phản chiếu lịch sử, thổ nhưỡng và tâm
+          hồn của mỗi dân tộc.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card" data-aos="fade-right" data-aos-delay="100">
+          <h3>🌍 Bản sắc ẩm thực 5 châu</h3>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Mỗi vùng đất là một kho tàng hương vị độc bản: từ sự tinh tế thanh tao của <strong>Ẩm thực Washoku Nhật
+              Bản</strong>,
+            nét lãng mạn quyến rũ của <strong>Haute Cuisine nước Pháp</strong>, vị nồng nàn rực rỡ của <strong>Địa Trung
+              Hải</strong>,
+            đến sự cân bằng âm dương hoàn mỹ trong <strong>Ẩm thực Việt Nam</strong>.
+          </p>
+          <p style="color: var(--text-muted);">
+            Tôn chỉ: <em>"Nấu ăn bằng cả trái tim, trân quý từng giọt hương vị tự nhiên và kết nối nhân loại qua bàn
+              tiệc."</em>
+          </p>
+        </div>
+        <div class="about-card" data-aos="fade-left" data-aos-delay="200">
+          <h3>📊 Thông số di sản ẩm thực</h3>
+          <ul class="info-list">
+            <li><span class="info-label">Tổ chức bảo trợ:</span> <span class="info-val">UNESCO & Michelin Guide</span>
+            </li>
+            <li><span class="info-label">Trọng tâm nghiên cứu:</span> <span class="info-val">Di sản ẩm thực & Kỹ nghệ
+                Nấu nướng</span></li>
+            <li><span class="info-label">Nguyên tắc cốt lõi:</span> <span class="info-val">Farm-to-Table & Tươi nguyên
+                bản</span></li>
+            <li><span class="info-label">Trạng thái:</span> <span class="info-val" style="color: var(--success);">Khám
+                phá & Trải nghiệm 24/7</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+       PHẦN 3: DẤU MỐC LỊCH SỬ DI SẢN ẨM THỰC (TIMELINE)
+       ======================================================================= -->
+    <section class="section" id="heritage" data-aos="fade-up">
+      <div class="section-header">
+        <span class="badge-tag">Phần 3 • Hành trình thời gian</span>
+        <h2 class="section-title">Dấu Mốc Di Sản Ẩm Thực Nhân Loại</h2>
+        <p class="section-desc">Những bước ngoặt định hình nên nền ẩm thực thế giới từ cổ điển đến hiện đại.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">THẾ KỶ 18 - 19</div>
+          <h4 class="timeline-title">Khởi Sinh Nhà Hàng Hiện Đại & Trường Phái Haute Cuisine</h4>
+          <p class="timeline-desc">Paris khai sinh mô hình nhà hàng phục vụ thực đơn riêng lẻ; các bậc thầy như Auguste
+            Escoffier hệ thống hóa kỹ thuật chế biến kinh điển của nền ẩm thực phương Tây.</p>
+        </div>
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2010 - HIỆN TẠI</div>
+          <h4 class="timeline-title">UNESCO Vinh Danh Di Sản Ẩm Thực Phi Vật Thể Toàn Cầu</h4>
+          <p class="timeline-desc">Bữa ăn ẩm thực Pháp, văn hóa ẩm thực Washoku Nhật Bản và Chế độ ăn Địa Trung Hải
+            chính thức được công nhận là kiệt tác di sản văn hóa phi vật thể của nhân loại.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+       PHẦN 4: ĐÁNH GIÁ VĂN HÓA ẨM THỰC & BÀI 6: SKILL BAR ANIMATION
+       ======================================================================= -->
+    <section class="section" id="ranking" data-aos="fade-up">
+      <div class="section-header">
+        <span class="badge-tag">Phần 4 • Bản đồ vị giác (Bài 6)</span>
+        <h2 class="section-title">Độ Tinh Hoa Của Các Nền Ẩm Thực Hàng Đầu</h2>
+        <p class="section-desc">Chỉ số đánh giá mức độ phong phú nguyên liệu, kỹ thuật chế biến và tầm ảnh hưởng toàn
+          cầu.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="skill-header">
+            <span>Ẩm thực Ý & Địa Trung Hải (Pasta, Pizza, Olive)</span>
+            <span>98%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--target-width: 98%;"></div>
+          </div>
+        </div>
+        <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="skill-header">
+            <span>Ẩm thực Nhật Bản Washoku (Sushi, Kaiseki, Umami)</span>
+            <span>96%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--target-width: 96%;"></div>
+          </div>
+        </div>
+        <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="skill-header">
+            <span>Ẩm thực Pháp Cổ Điển (Haute Cuisine, Vang & Bơ)</span>
+            <span>95%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--target-width: 95%;"></div>
+          </div>
+        </div>
+        <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="skill-header">
+            <span>Ẩm thực Việt Nam (Phở, Bánh Mì, Nước Mắm Di Sản)</span>
+            <span>97%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--target-width: 97%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+       BÀI 4: PARALLAX IMAGE BANNER (AI CULINARY MATRIX THEME)
+       ======================================================================= -->
+    <div class="parallax-banner" data-aos="fade-up">
+      <div class="parallax-content">
+        <span class="badge-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">Bài 4 • Michelin Culinary
+          Matrix</span>
+        <h2 class="parallax-title">"Nấu ăn là nghệ thuật, và người thưởng thức là những kẻ say mê cái đẹp"</h2>
+        <p class="parallax-subtitle">Thưởng thức món ăn không chỉ dừng lại ở vị giác, mà là sự thăng hoa trọn vẹn của
+          thị giác, khứu giác và cảm xúc thăng hoa.</p>
+        <a href="#contact" class="btn-primary">🍷 Đặt trải nghiệm ẩm thực</a>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+       PHẦN 5: CÁC MÓN ĂN BIỂU TƯỢNG THẾ GIỚI (ICONIC DISHES PORTFOLIO)
+       ======================================================================= -->
+    <section class="section" id="dishes" data-aos="fade-up">
+      <div class="section-header">
+        <span class="badge-tag">Phần 5 • Kiệt tác mỹ vị</span>
+        <h2 class="section-title">Món Ăn Biểu Tượng Khắp Năm Châu</h2>
+        <p class="section-desc">Những cực phẩm ẩm thực đã chinh phục hàng triệu thực khách sành sỏi nhất trên toàn cầu.
+        </p>
+      </div>
+      <div class="projects-grid">
+        <!-- Món ăn 1 -->
+        <div class="project-card" data-aos="flip-left" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=500&auto=format&fit=crop&q=80"
+            alt="Sushi Edomae Nhật Bản" class="project-img">
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">Nhật Bản</span>
+              <span class="tag">Sushi Edomae</span>
+              <span class="tag">Wagyu A5</span>
+              <span class="tag">Vị Umami</span>
+            </div>
+            <h3 class="project-title">Sushi Edomae & Bò Wagyu A5 Thượng Hạng</h3>
+            <p class="project-desc">Đỉnh cao nghệ thuật bảo quản và chế biến hải sản tươi sống kết hợp cùng lát bò Wagyu
+              vân mỡ cẩm thạch tan chảy tức thì trên đầu lưỡi.</p>
+          </div>
+        </div>
+
+        <!-- Món ăn 2 -->
+        <div class="project-card" data-aos="flip-right" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=500&auto=format&fit=crop&q=80"
+            alt="Pasta Truffle và Pizza Napoli" class="project-img">
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">Nước Ý</span>
+              <span class="tag">Truffle Đen</span>
+              <span class="tag">Pizza Napoli</span>
+              <span class="tag">Parmigiano</span>
+            </div>
+            <h3 class="project-title">Mì Ý Sốt Nấm Truffle & Pizza Củi Napoli</h3>
+            <p class="project-desc">Sự hòa quyện nồng nàn giữa hương nấm truffle quý hiếm, phô mai Parmigiano Reggiano
+              24 tháng và vỏ bánh pizza nướng lò củi chuẩn gốc Ý.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+       PHẦN 6: NGHỆ THUẬT & TRẢI NGHIỆM THƯỞNG THỨC (CULINARY EXPLORATIONS)
+       ======================================================================= -->
+    <section class="section" id="art" data-aos="fade-up">
+      <div class="section-header">
+        <span class="badge-tag">Phần 6 • Văn hóa & Nghệ thuật</span>
+        <h2 class="section-title">Nghệ Thuật Thưởng Thức Ẩm Thực</h2>
+        <p class="section-desc">Những triết lý nâng tầm việc ăn uống trở thành trải nghiệm văn hóa tao nhã và sâu sắc.
+        </p>
+      </div>
+      <div class="hobbies-grid">
+        <div class="hobby-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="hobby-icon">🍷</div>
+          <div class="hobby-name">Pairing Rượu Vang & Phô Mai</div>
+          <div class="hobby-desc">Kỹ thuật phối hợp rượu vang Bordeaux cổ điển tôn vinh trọn vẹn từng thớ hương vị món
+            ăn.</div>
+        </div>
+        <div class="hobby-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="hobby-icon">🥢</div>
+          <div class="hobby-name">Tinh Thần Omotenashi & Trà Đạo</div>
+          <div class="hobby-desc">Lòng hiếu khách tận tụy của người Nhật, đặt trọn tâm tư vào sự hài lòng của thực
+            khách.</div>
+        </div>
+        <div class="hobby-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="hobby-icon">🌿</div>
+          <div class="hobby-name">Gia Vị & Thảo Mộc Bản Địa</div>
+          <div class="hobby-desc">Khám phá các loại thảo mộc Đông Nam Á tạo nên nét đậm đà, tươi mới và cân bằng ngũ
+            hành.</div>
+        </div>
+        <div class="hobby-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="hobby-icon">☕</div>
+          <div class="hobby-name">Cà Phê Đặc Sản & Trà Chiều</div>
+          <div class="hobby-desc">Nghi thức trà chiều quý tộc Anh và hạt cà phê Specialty rang thủ công từ các cao
+            nguyên danh tiếng.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+       PHẦN 7: BẬC THẦY ẨM THỰC THẾ GIỚI & BÀI 2: 3D CARD FLIP EFFECT
+       ======================================================================= -->
+    <section class="section" id="chefs" data-aos="fade-up">
+      <div class="section-header">
+        <span class="badge-tag">Phần 7 • Bậc thầy bếp trưởng (Bài 2: 3D Card Flip)</span>
+        <h2 class="section-title">Những Bếp Trưởng Huyền Thoại Thế Giới</h2>
+        <p class="section-desc">Rê chuột hoặc chạm vào thẻ để trải nghiệm hiệu ứng <strong>lật 3D 180°</strong> và gửi
+          <strong>"Lời nhắn ẩm thực"</strong>.</p>
+      </div>
+
+      <div class="friends-grid">
+        <!-- Bếp trưởng 1 (3D Flip Card) -->
+        <div class="flip-card-container" data-aos="zoom-in" data-aos-delay="100">
+          <div class="flip-card-inner">
+            <!-- Mặt trước -->
+            <div class="flip-card-front">
+              <div class="friend-avatar-wrap">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=150&auto=format&fit=crop&q=80"
+                  alt="Chef Alain Ducasse" class="friend-avatar">
+                <div class="status-dot"></div>
+              </div>
+              <div class="friend-name">Chef Alain Ducasse</div>
+              <div class="friend-role">Huyền Thoại Ẩm Thực Pháp • 21 Sao Michelin</div>
+              <div class="flip-hint">🔄 Rê chuột hoặc chạm để xem triết lý</div>
+            </div>
+            <!-- Mặt sau (Lật 180 độ) -->
+            <div class="flip-card-back">
+              <div class="flip-back-title">Chef Alain Ducasse</div>
+              <div class="friend-quote">"Ẩm thực đỉnh cao là sự tôn trọng tuyệt đối với thiên nhiên và sản vật nguyên
+                bản của từng vùng đất."</div>
+              <button class="btn-open-msg" data-name="Chef Alain Ducasse"
+                data-role="Huyền Thoại Ẩm Thực Pháp • 21 Sao Michelin"
+                data-avatar="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=150&auto=format&fit=crop&q=80"
+                type="button">
+                💬 Gửi lời nhắn ẩm thực
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bếp trưởng 2 (3D Flip Card) -->
+        <div class="flip-card-container" data-aos="zoom-in" data-aos-delay="200">
+          <div class="flip-card-inner">
+            <!-- Mặt trước -->
+            <div class="flip-card-front">
+              <div class="friend-avatar-wrap">
+                <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=150&auto=format&fit=crop&q=80"
+                  alt="Chef Jiro Ono" class="friend-avatar">
+                <div class="status-dot"></div>
+              </div>
+              <div class="friend-name">Chef Jiro Ono</div>
+              <div class="friend-role">Bậc Thầy Sushi Sukiyabashi • 3 Sao Michelin</div>
+              <div class="flip-hint">🔄 Rê chuột hoặc chạm để xem triết lý</div>
+            </div>
+            <!-- Mặt sau -->
+            <div class="flip-card-back">
+              <div class="flip-back-title">Chef Jiro Ono</div>
+              <div class="friend-quote">"Không bao giờ được phép hài lòng với công việc của mình. Phải luôn nỗ lực mỗi
+                ngày để vươn tới sự hoàn mỹ."</div>
+              <button class="btn-open-msg" data-name="Chef Jiro Ono"
+                data-role="Bậc Thầy Sushi Sukiyabashi • 3 Sao Michelin"
+                data-avatar="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=150&auto=format&fit=crop&q=80"
+                type="button">
+                💬 Gửi lời nhắn ẩm thực
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bếp trưởng 3 (3D Flip Card) -->
+        <div class="flip-card-container" data-aos="zoom-in" data-aos-delay="300">
+          <div class="flip-card-inner">
+            <!-- Mặt trước -->
+            <div class="flip-card-front">
+              <div class="friend-avatar-wrap">
+                <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=150&auto=format&fit=crop&q=80"
+                  alt="Chef Massimo Bottura" class="friend-avatar">
+                <div class="status-dot"></div>
+              </div>
+              <div class="friend-name">Chef Massimo Bottura</div>
+              <div class="friend-role">Osteria Francescana • #1 World's 50 Best</div>
+              <div class="flip-hint">🔄 Rê chuột hoặc chạm để xem triết lý</div>
+            </div>
+            <!-- Mặt sau -->
+            <div class="flip-card-back">
+              <div class="flip-back-title">Chef Massimo Bottura</div>
+              <div class="friend-quote">"Hãy nhìn lại truyền thống từ một khoảng cách đủ xa để kiến tạo nên tương lai
+                rực rỡ của ẩm thực đương đại."</div>
+              <button class="btn-open-msg" data-name="Chef Massimo Bottura"
+                data-role="Osteria Francescana • #1 World's 50 Best"
+                data-avatar="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=150&auto=format&fit=crop&q=80"
+                type="button">
+                💬 Gửi lời nhắn ẩm thực
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+       MODAL / POPUP GỬI LỜI NHẮN & ĐẶT TRẢI NGHIỆM ẨM THỰC
+       ======================================================================= -->
+    <div class="modal-overlay" id="messageModal">
+      <div class="modal-box">
+        <button class="modal-close-btn" id="modalCloseBtn" type="button">&times;</button>
+
+        <div class="modal-header">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=150&auto=format&fit=crop&q=80"
+            alt="Avatar người nhận" class="modal-receiver-avatar" id="modalAvatar">
+          <div class="modal-receiver-info">
+            <h4 id="modalReceiverName">Tên Bếp Trưởng</h4>
+            <p id="modalReceiverRole">● Sẵn sàng tư vấn thực đơn</p>
+          </div>
+        </div>
+
+        <form id="msgForm">
+          <div class="form-group">
+            <label class="form-label" for="senderName">Họ và tên của bạn / Thực khách:</label>
+            <input type="text" id="senderName" class="form-input" value="Lê Cao Duy Khang" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="msgContent">Lời nhắn ẩm thực / Yêu cầu thực đơn đặc biệt:</label>
+            <textarea id="msgContent" class="form-textarea"
+              placeholder="Nhập nội dung chia sẻ về cảm xúc ẩm thực hoặc đề xuất thực đơn giao lưu..."
+              required></textarea>
+          </div>
+
+          <!-- NÚT BẤM CẢM XÚC GỬI TIN NHẮN (CUBIC-BEZIER & ACTIVE SCALE) -->
+          <button class="btn-send" id="btnSendMsg" type="submit">
+            <span id="btnText">Gửi lời nhắn ẩm thực</span>
+            <div class="modal-spinner" id="modalSpinner"></div>
+            <svg id="btnIcon" viewBox="0 0 24 24">
+              <path d="M22 2L11 13"></path>
+              <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+            </svg>
+          </button>
+
+          <div class="modal-status-text" id="modalStatusText"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+       PHẦN 8: LIÊN HỆ & ĐẶT BÀN TRẢI NGHIỆM (GASTRONOMY CONTACT & FOOTER)
+       ======================================================================= -->
+    <section class="section" id="contact" data-aos="fade-up">
+      <div class="section-header">
+        <span class="badge-tag">Phần 8 • Kết nối vị giác</span>
+        <h2 class="section-title">Đặt Trải Nghiệm Ẩm Thực & Giao Lưu</h2>
+        <p class="section-desc">Sẵn sàng đồng hành cùng bạn trên hành trình khám phá những bàn tiệc đẳng cấp nhất hành
+          tinh.</p>
+      </div>
+      <div class="contact-box" data-aos="zoom-in" data-aos-delay="100">
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+          Bạn muốn đặt bàn cho tiệc ẩm thực tư gia, kết nối hợp tác cùng các bếp trưởng hàng đầu hoặc giao lưu văn hóa
+          ẩm thực? Hãy liên hệ với chúng tôi:
+        </p>
+        <div class="contact-links">
+          <a href="mailto:reservation@gourmetworld.vn" class="contact-item">
+            ✉️ reservation@gourmetworld.vn
+          </a>
+          <a href="tel:+84901234567" class="contact-item">
+            📞 +84 901 234 567 (Concierge 24/7)
+          </a>
+          <a href="#hero" class="contact-item">
+            🌐 gourmetworld.vn
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =======================================================================
+       BÀI 1: FLOATING ACTION BUTTON (FAB) VỚI HIỆU ỨNG PHẬP PHỒNG (PULSE RADAR)
+       ======================================================================= -->
+  <div class="fab-container" title="Đặt bàn ẩm thực nhanh">
+    <a href="#contact" class="fab-btn" aria-label="Nút Đặt bàn nhanh">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+        </path>
+      </svg>
+    </a>
+    <span class="fab-tooltip">Đặt bàn nhanh 🍷</span>
+  </div>
+
+  <!-- CHÂN TRANG -->
+  <footer class="footer">
+    <p>© 2026 <strong>GourmetWorld.vn</strong> • Tinh Hoa Ẩm Thực Thế Giới. Thiết kế với
+      Micro-interactions & CSS3 Animation.
+    </p>
+  </footer>
+
+  <!-- Thư viện AOS JavaScript qua CDN -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <!-- SCRIPT XỬ LÝ SỰ KIỆN GỬI TIN NHẮN & KHỞI TẠO AOS -->
+  <script>
+    // Khởi tạo AOS Animation On Scroll
+    AOS.init({
+      duration: 800,
+      once: false,
+      offset: 80,
+      easing: 'ease-out-cubic'
+    });
+
+    const messageModal = document.getElementById('messageModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalAvatar = document.getElementById('modalAvatar');
+    const modalReceiverName = document.getElementById('modalReceiverName');
+    const modalReceiverRole = document.getElementById('modalReceiverRole');
+    const msgForm = document.getElementById('msgForm');
+    const btnSendMsg = document.getElementById('btnSendMsg');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    const modalSpinner = document.getElementById('modalSpinner');
+    const modalStatusText = document.getElementById('modalStatusText');
+
+    // Mở modal khi bấm "Gửi lời nhắn ẩm thực"
+    const openMsgButtons = document.querySelectorAll('.btn-open-msg');
+    openMsgButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-name');
+        const role = btn.getAttribute('data-role');
+        const avatar = btn.getAttribute('data-avatar');
+
+        modalReceiverName.textContent = name;
+        modalReceiverRole.textContent = `● ${role}`;
+        modalAvatar.src = avatar;
+        modalStatusText.textContent = '';
+        msgForm.reset();
+        document.getElementById('senderName').value = 'Lê Cao Duy Khang';
+
+        messageModal.classList.add('active');
+      });
+    });
+
+    // Đóng modal
+    function closeModal() {
+      messageModal.classList.remove('active');
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    // Đóng khi click ra ngoài vùng modal
+    messageModal.addEventListener('click', (e) => {
+      if (e.target === messageModal) closeModal();
+    });
+
+    // Xử lý gửi tin nhắn với animation loading feedback
+    msgForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      btnText.textContent = 'Đang chuyển lời nhắn...';
+      btnIcon.style.display = 'none';
+      modalSpinner.style.display = 'inline-block';
+      btnSendMsg.disabled = true;
+      modalStatusText.style.color = '#fbbf24';
+      modalStatusText.textContent = 'Đang kết nối thư ký ẩm thực của bếp trưởng...';
+
+      setTimeout(() => {
+        btnText.textContent = 'Đã gửi thành công!';
+        modalSpinner.style.display = 'none';
+        modalStatusText.style.color = '#34d399';
+        modalStatusText.textContent = `✅ Lời nhắn ẩm thực đã được chuyển tới ${modalReceiverName.textContent}!`;
+
+        setTimeout(() => {
+          btnText.textContent = 'Gửi lời nhắn ẩm thực';
+          btnIcon.style.display = 'inline-block';
+          btnSendMsg.disabled = false;
+          closeModal();
+        }, 1400);
+      }, 1200);
+    });
+  </script>
+</body>
+
+</html>
