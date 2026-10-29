@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" width="100%" height="100%">
+  <defs>
+    <!-- Bộ lọc phát sáng rực rỡ (Glow Filter) -->
+    <filter id="bulbGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur1" />
+      <feGaussianBlur stdDeviation="24" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Hào quang ánh sáng tỏa tròn -->
+    <radialGradient id="auraGradient" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="25%" stop-color="#fef08a" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#facc15" stop-opacity="0.8" />
+      <stop offset="85%" stop-color="#f59e0b" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ea580c" stop-opacity="0.2" />
+    </radialGradient>
+
+    <!-- Gradient cho thân bóng đèn khi bật sáng -->
+    <linearGradient id="onBulbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#fef08a" />
+      <stop offset="70%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+
+    <linearGradient id="socketOnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+
+    <linearGradient id="contactOnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+  </defs>
+
+  <!-- Các tia sáng phát ra xung quanh (Light Rays) -->
+  <g stroke="#facc15" stroke-width="4.5" stroke-linecap="round" opacity="0.9">
+    <!-- Phía trên -->
+    <line x1="120" y1="2" x2="120" y2="14" />
+    <!-- Chéo trên trái / phải -->
+    <line x1="45" y1="35" x2="55" y2="45" />
+    <line x1="195" y1="35" x2="185" y2="45" />
+    <!-- Hai bên hông -->
+    <line x1="10" y1="110" x2="25" y2="110" />
+    <line x1="230" y1="110" x2="215" y2="110" />
+    <!-- Chéo dưới -->
+    <line x1="40" y1="175" x2="52" y2="168" />
+    <line x1="200" y1="175" x2="188" y2="168" />
+  </g>
+
+  <!-- Hào quang phát sáng nền -->
+  <circle cx="120" cy="110" r="95" fill="#facc15" opacity="0.25" filter="url(#bulbGlow)" />
+  <circle cx="120" cy="110" r="70" fill="#fef08a" opacity="0.35" filter="url(#bulbGlow)" />
+
+  <!-- Dây tóc bên trong bóng đèn (Phát quang cực đại) -->
+  <path d="M 105 180 L 105 130 L 115 110 L 125 110 L 135 130 L 135 180" fill="none" stroke="#ea580c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 110 110 C 115 95, 125 95, 130 110" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" filter="url(#bulbGlow)" />
+  <circle cx="120" cy="103" r="10" fill="#ffffff" filter="url(#bulbGlow)" opacity="0.9" />
+
+  <!-- Thân bóng đèn thủy tinh (Bật Sáng) -->
+  <path d="M 120 20 
+           C 65 20, 40 65, 40 110 
+           C 40 145, 65 170, 85 200 
+           C 95 215, 95 225, 95 235 
+           L 145 235 
+           C 145 225, 145 215, 155 200 
+           C 175 170, 200 145, 200 110 
+           C 200 65, 175 20, 120 20 Z" 
+        fill="url(#auraGradient)" 
+        stroke="#f59e0b" 
+        stroke-width="3" 
+        stroke-linejoin="round" 
+        filter="url(#bulbGlow)" />
+
+  <!-- Lõi trắng phản quang tâm đèn -->
+  <ellipse cx="120" cy="95" rx="36" ry="46" fill="#ffffff" opacity="0.65" filter="url(#bulbGlow)" />
+
+  <!-- Vệt phản xạ thủy tinh bóng đèn bên trái -->
+  <path d="M 65 60 C 55 80, 55 105, 62 130" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.85" />
+  <path d="M 78 42 C 72 48, 68 55, 65 62" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.75" />
+
+  <!-- Đui xoắn ốc kim loại (ánh vàng phản chiếu) -->
+  <rect x="92" y="235" width="56" height="10" rx="4" fill="url(#socketOnGrad)" stroke="#475569" stroke-width="1.5" />
+  <rect x="94" y="247" width="52" height="10" rx="4" fill="url(#socketOnGrad)" stroke="#475569" stroke-width="1.5" />
+  <rect x="96" y="259" width="48" height="10" rx="4" fill="url(#socketOnGrad)" stroke="#475569" stroke-width="1.5" />
+  <rect x="98" y="271" width="44" height="10" rx="4" fill="url(#socketOnGrad)" stroke="#475569" stroke-width="1.5" />
+
+  <!-- Chân tiếp xúc dưới cùng -->
+  <path d="M 103 283 L 137 283 C 137 296, 103 296, 103 283 Z" fill="url(#contactOnGrad)" stroke="#1e293b" stroke-width="1.5" />
+</svg>

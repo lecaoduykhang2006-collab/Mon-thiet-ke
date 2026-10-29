@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoạt động 3: Live Input - Phản Hồi Tức Thì | Lê Cao Duy Khang - 125000847</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ====================================================================
+           CSS STYLES CHO BÀI TẬP: HOẠT ĐỘNG 3 - "LIVE INPUT"
+           Giao diện Dark Modern / Glassmorphism theo chuẩn đồ án NexTech.io
+           ==================================================================== */
+        :root {
+            --color-bg-primary: #080c15;
+            --color-bg-card: rgba(19, 28, 51, 0.7);
+            --color-primary: #00f2fe;
+            --color-secondary: #7928ca;
+            --color-accent-pink: #ff007a;
+            --color-text-main: #f8fafc;
+            --color-text-secondary: #94a3b8;
+            --color-border: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --font-code: 'Fira Code', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg-primary);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 242, 254, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(121, 40, 202, 0.12) 0%, transparent 45%);
+            color: var(--color-text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 640px;
+            background: var(--color-bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 242, 254, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Viền sáng neon trên đầu thẻ card */
+        .card-top-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00f2fe, #7928ca, #ff007a);
+        }
+
+        /* Badge định danh bài tập */
+        .exercise-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(0, 242, 254, 0.12);
+            color: var(--color-primary);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .student-info {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 28px;
+        }
+
+        /* KHỐI 1: Ô NHẬP LIỆU & THẺ SPAN BÊN CẠNH (Theo đúng Hướng dẫn) */
+        .input-group-wrapper {
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .input-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .input-label {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Ô nhập và thẻ span nằm cạnh nhau */
+        .input-with-side-span {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .custom-input {
+            flex: 1;
+            background: rgba(8, 12, 21, 0.8);
+            border: 1.5px solid rgba(0, 242, 254, 0.3);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-family: var(--font-main);
+            font-size: 1.05rem;
+            color: #ffffff;
+            outline: none;
+            transition: all 0.25s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-input:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 16px rgba(0, 242, 254, 0.35), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            background: rgba(8, 12, 21, 0.95);
+        }
+
+        .custom-input::placeholder {
+            color: #475569;
+        }
+
+        /* THẺ SPAN BÊN CẠNH (Theo yêu cầu Hướng dẫn bài tập) */
+        .side-span-badge {
+            background: rgba(121, 40, 202, 0.18);
+            border: 1px solid rgba(121, 40, 202, 0.4);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.92rem;
+            color: #d8b4fe;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.2s ease;
+        }
+
+        .side-span-badge .side-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #c084fc;
+            background: rgba(121, 40, 202, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .side-span-text {
+            font-weight: 600;
+            color: #ffffff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* KHỐI 2: THẺ H2 HIỂN THỊ TỨC THÌ BÊN DƯỚI (Theo đúng Prompt mẫu) */
+        .live-preview-box {
+            background: rgba(8, 12, 21, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            margin-bottom: 24px;
+            position: relative;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+            transition: border-color 0.3s ease;
+        }
+
+        .live-preview-box.has-content {
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15), inset 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.82rem;
+            color: var(--color-text-secondary);
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .live-indicator .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #10b981;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulseAnimation 1.5s infinite;
+        }
+
+        @keyframes pulseAnimation {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        /* THẺ H2 BÊN DƯỚI (Theo đúng Prompt mẫu) */
+        #live-heading {
+            font-family: var(--font-heading);
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.35;
+            min-height: 40px;
+            word-break: break-word;
+            transition: color 0.2s ease;
+        }
+
+        #live-heading.empty-state {
+            color: #475569;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.15rem;
+        }
+
+        /* Thống kê ký tự và từ */
+        .stats-row {
+            display: flex;
+            gap: 16px;
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .stat-item strong {
+            color: #ffffff;
+            font-family: var(--font-code);
+        }
+
+        /* Nút tiện ích: Xóa nhanh, điền từ mẫu */
+        .utility-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .btn-preset {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-preset:hover {
+            background: rgba(0, 242, 254, 0.15);
+            border-color: var(--color-primary);
+            color: #ffffff;
+        }
+
+        .btn-clear {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            margin-left: auto;
+            transition: all 0.2s ease;
+        }
+
+        .btn-clear:hover {
+            background: rgba(239, 68, 68, 0.25);
+            color: #ffffff;
+        }
+
+        /* Khối giải thích code dành cho Giảng viên xem tiêu chí */
+        .code-details {
+            text-align: left;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+
+        .code-details summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--color-primary);
+            outline: none;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .code-snippet {
+            margin-top: 12px;
+            background: #050811;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: var(--font-code);
+            font-size: 0.82rem;
+            color: #38bdf8;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            line-height: 1.5;
+        }
+
+        /* Liên kết điều hướng về trang chủ */
+        .back-nav {
+            margin-top: 24px;
+        }
+
+        .back-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 576px) {
+            .input-with-side-span {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .side-span-badge {
+                max-width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <div class="card-top-line"></div>
+
+        <!-- Badge định danh bài tập -->
+        <div class="exercise-badge">
+            <i class="fa-solid fa-bolt"></i> Hoạt động 3: Live Input
+        </div>
+
+        <h1 class="title">Phản Hồi Tức Thì (Live Input)</h1>
+        <p class="student-info">
+            <strong>Sinh viên:</strong> Lê Cao Duy Khang &bull; <strong>MSSV:</strong> 125000847 &bull; Đại học Lạc Hồng (LHU)
+        </p>
+
+        <!-- 
+            YÊU CẦU 1 (HƯỚNG DẪN):
+            Tạo một ô <input>. Khi người dùng gõ chữ vào ô đó, nội dung ngay lập tức xuất hiện ở một thẻ <span> bên cạnh.
+        -->
+        <div class="input-group-wrapper">
+            <div class="input-label-row">
+                <label for="user-input" class="input-label">
+                    <i class="fa-regular fa-keyboard"></i> Nhập văn bản thử nghiệm:
+                </label>
+            </div>
+            
+            <div class="input-with-side-span">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    class="custom-input" 
+                    placeholder="Hãy gõ nội dung bất kỳ tại đây..." 
+                    autocomplete="off"
+                    aria-describedby="live-span"
+                >
+                <!-- THẺ <span> BÊN CẠNH THEO YÊU CẦU HƯỚNG DẪN -->
+                <div class="side-span-badge" title="Nội dung hiển thị tức thì ở thẻ span bên cạnh">
+                    <span class="side-tag">&lt;span&gt;</span>
+                    <span id="live-span" class="side-span-text">(chưa nhập)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nút mẫu tiện lợi để test nhanh -->
+        <div class="utility-actions">
+            <button type="button" class="btn-preset" onclick="setPresetText('NexTech AI Quantum 2026')">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Mẫu 1
+            </button>
+            <button type="button" class="btn-preset" onclick="setPresetText('Lê Cao Duy Khang - 125000847')">
+                <i class="fa-solid fa-user-graduate"></i> Mẫu 2: Thông tin SV
+            </button>
+            <button type="button" class="btn-preset" onclick="setPresetText('JavaScript DOM Event Input')">
+                <i class="fa-brands fa-js"></i> Mẫu 3: JS Event
+            </button>
+            <button type="button" class="btn-clear" id="clear-btn" title="Xóa toàn bộ nội dung">
+                <i class="fa-solid fa-trash-can"></i> Xóa
+            </button>
+        </div>
+
+        <!-- 
+            YÊU CẦU 2 (PROMPT MẪU):
+            "Sử dụng sự kiện 'input' trong JavaScript để lấy giá trị từ một ô text và hiển thị nó ngay lập tức vào một thẻ h2 bên dưới."
+        -->
+        <section class="live-preview-box" id="previewContainer" aria-live="polite">
+            <div class="preview-header">
+                <span class="live-indicator">
+                    <span class="pulse-dot"></span> THẺ &lt;h2&gt; PHẢN HỒI THỜI GIAN THỰC (LIVE)
+                </span>
+                <span id="typingStatus">Sẵn sàng nhận dữ liệu</span>
+            </div>
+
+            <!-- THẺ H2 HIỂN THỊ TỨC THÌ BÊN DƯỚI -->
+            <h2 id="live-heading" class="empty-state">
+                Nội dung bạn nhập sẽ xuất hiện ngay lập tức tại đây...
+            </h2>
+
+            <!-- Thống kê trực tiếp -->
+            <div class="stats-row">
+                <span class="stat-item">Số ký tự: <strong id="charCount">0</strong></span>
+                <span class="stat-item">Số từ: <strong id="wordCount">0</strong></span>
+            </div>
+        </section>
+
+        <!-- Hộp giải thích mã JavaScript cho Giảng viên -->
+        <details class="code-details">
+            <summary><i class="fa-solid fa-code"></i> Xem mã JavaScript cốt lõi (Core DOM Event)</summary>
+            <div class="code-snippet">
+// 1. Truy xuất các phần tử DOM
+const textInput   = document.getElementById('user-input');
+const liveSpan    = document.getElementById('live-span');
+const liveHeading = document.getElementById('live-heading');
+
+// 2. Lắng nghe sự kiện 'input' (kích hoạt ngay khi người dùng gõ từng phím)
+textInput.addEventListener('input', function(event) {
+    // Lấy giá trị hiện thời từ ô text
+    const textValue = event.target.value;
+
+    // Hiển thị ngay lập tức vào thẻ &lt;span&gt; bên cạnh
+    liveSpan.textContent = textValue.trim() !== '' ? textValue : '(chưa nhập)';
+
+    // Hiển thị ngay lập tức vào thẻ &lt;h2&gt; bên dưới
+    if (textValue.trim() !== '') {
+        liveHeading.textContent = textValue;
+        liveHeading.classList.remove('empty-state');
+    } else {
+        liveHeading.textContent = 'Nội dung bạn nhập sẽ xuất hiện ngay lập tức tại đây...';
+        liveHeading.classList.add('empty-state');
+    }
+});
+            </div>
+        </details>
+
+        <!-- Liên kết quay lại Landing Page NexTech -->
+        <div class="back-nav">
+            <a href="index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại NexTech.io Đồ Án
+            </a>
+        </div>
+    </main>
+
+    <!-- ====================================================================
+         MÃ JAVASCRIPT XỬ LÝ HOẠT ĐỘNG 3 (LIVE INPUT)
+         ==================================================================== -->
+    <script>
+        // BƯỚC 1: Lấy các phần tử DOM qua ID
+        const userInput   = document.getElementById('user-input');
+        const liveSpan    = document.getElementById('live-span');
+        const liveHeading = document.getElementById('live-heading');
+        const previewBox  = document.getElementById('previewContainer');
+        const charCount   = document.getElementById('charCount');
+        const wordCount   = document.getElementById('wordCount');
+        const typingStatus = document.getElementById('typingStatus');
+        const clearBtn    = document.getElementById('clear-btn');
+
+        /**
+         * BƯỚC 2: HÀM CẬP NHẬT GIAO DIỆN TỨC THÌ KHI CÓ SỰ KIỆN INPUT
+         */
+        function handleLiveInput() {
+            // Lấy giá trị chuỗi hiện tại trong ô input
+            const value = userInput.value;
+            const trimmedValue = value.trim();
+
+            // 1. HIỂN THỊ TỨC THÌ VÀO THẺ <span> BÊN CẠNH (Theo Hướng dẫn)
+            if (trimmedValue !== '') {
+                liveSpan.textContent = value;
+            } else {
+                liveSpan.textContent = '(chưa nhập)';
+            }
+
+            // 2. HIỂN THỊ TỨC THÌ VÀO THẺ <h2> BÊN DƯỚI (Theo Prompt mẫu)
+            if (trimmedValue !== '') {
+                liveHeading.textContent = value;
+                liveHeading.classList.remove('empty-state');
+                previewBox.classList.add('has-content');
+                typingStatus.textContent = 'Đang nhận ký tự...';
+            } else {
+                liveHeading.textContent = 'Nội dung bạn nhập sẽ xuất hiện ngay lập tức tại đây...';
+                liveHeading.classList.add('empty-state');
+                previewBox.classList.remove('has-content');
+                typingStatus.textContent = 'Sẵn sàng nhận dữ liệu';
+            }
+
+            // 3. Cập nhật thống kê số lượng ký tự và từ
+            charCount.textContent = value.length;
+            const words = trimmedValue ? trimmedValue.split(/\s+/).length : 0;
+            wordCount.textContent = words;
+        }
+
+        // BƯỚC 3: GẮN SỰ KIỆN 'input' VÀO Ô TEXT (Theo đúng yêu cầu cốt lõi)
+        // Sự kiện 'input' kích hoạt ngay tức thì khi gõ phím, xóa phím, hoặc dán chữ (Paste)
+        userInput.addEventListener('input', handleLiveInput);
+
+        // Bổ sung: Nút xóa nội dung nhanh
+        clearBtn.addEventListener('click', () => {
+            userInput.value = '';
+            handleLiveInput();
+            userInput.focus();
+        });
+
+        // Hàm đặt văn bản mẫu cho nút preset
+        function setPresetText(text) {
+            userInput.value = text;
+            handleLiveInput();
+            userInput.focus();
+        }
+
+        // Tự động focus vào ô input khi vừa tải trang để tiện trải nghiệm
+        userInput.focus();
+    </script>
+</body>
+</html>

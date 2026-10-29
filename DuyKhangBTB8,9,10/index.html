@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexTech - Website giới thiệu thiết bị công nghệ đỉnh cao và tin tức công nghệ mới nhất. Bài thi Thiết kế Web của sinh viên Lê Cao Duy Khang - MSSV: 125000847.">
+    <meta name="keywords" content="công nghệ, thiết bị AI, laptop, smartphone, tin tức tech, landing page, Lê Cao Duy Khang">
+    <meta name="author" content="Lê Cao Duy Khang - 125000847">
+    <title>NexTech | Sản Phẩm & Tin Tức Công Nghệ Đột Phá 2026</title>
+
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Thư viện Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Thư viện AOS (Animate On Scroll) CDN CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- =======================================================================
+         THÁCH THỨC TUẦN 8: "THE LOGIC PUZZLE" - REAL-TIME GREETING POPUP
+         Xử lý lời chào thông minh theo thời gian thực dựa trên new Date().getHours()
+         ======================================================================= -->
+    <aside class="realtime-toast" id="realtimeToast" role="alert" aria-live="polite">
+        <div class="toast-glow"></div>
+        <div class="toast-header">
+            <div class="toast-brand">
+                <span class="status-dot"></span>
+                <span class="toast-title">NEX-AI REALTIME ASSISTANT</span>
+            </div>
+            <button type="button" class="toast-close" id="toastCloseBtn" aria-label="Đóng thông báo">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="toast-body">
+            <div class="toast-icon-box" id="toastIconBox">
+                <i class="fa-solid fa-cloud-sun" id="toastIcon"></i>
+            </div>
+            <div class="toast-info">
+                <h3 class="toast-greeting" id="toastGreeting">Chào buổi chiều!</h3>
+                <p class="toast-message" id="toastMessage">Chúc bạn một buổi chiều làm việc và sáng tạo bứt phá cùng hệ sinh thái thiết bị phần cứng thông minh!</p>
+                <div class="toast-meta">
+                    <span class="toast-clock"><i class="fa-regular fa-clock"></i> <span id="toastClock">--:--:--</span></span>
+                    <span class="toast-date"><i class="fa-regular fa-calendar"></i> <span id="toastDate">--/--/----</span></span>
+                    <span class="toast-hour-badge" id="toastHourBadge">Giờ hiện tại: --h</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bộ điều khiển kiểm thử thời gian dành cho Giảng viên (Time Simulator) -->
+        <div class="toast-simulator" id="toastSimulator">
+            <div class="sim-header">
+                <span><i class="fa-solid fa-flask"></i> Kiểm tra Logic (Dành cho Giảng viên chấm bài):</span>
+            </div>
+            <div class="sim-buttons">
+                <button type="button" class="sim-btn" data-hour="8" title="Mô phỏng 08:00 sáng"><i class="fa-solid fa-sun"></i> Sáng (8h)</button>
+                <button type="button" class="sim-btn" data-hour="12" title="Mô phỏng 12:00 trưa"><i class="fa-solid fa-utensils"></i> Trưa (12h)</button>
+                <button type="button" class="sim-btn" data-hour="16" title="Mô phỏng 16:00 chiều"><i class="fa-solid fa-cloud-sun"></i> Chiều (16h)</button>
+                <button type="button" class="sim-btn" data-hour="20" title="Mô phỏng 20:00 tối"><i class="fa-solid fa-moon"></i> Tối (20h)</button>
+                <button type="button" class="sim-btn" data-hour="2" title="Mô phỏng 02:00 đêm"><i class="fa-solid fa-star-and-crescent"></i> Đêm (2h)</button>
+                <button type="button" class="sim-btn sim-btn-reset active" data-hour="real" title="Quay lại thời gian thực tế"><i class="fa-solid fa-rotate-right"></i> Thực tế</button>
+            </div>
+        </div>
+
+        <!-- Thanh đếm lùi thời gian tự động đóng -->
+        <div class="toast-progress">
+            <div class="toast-progress-bar" id="toastProgressBar"></div>
+        </div>
+    </aside>
+
+    <!-- Nút chuông nổi mở lại Toast khi đã đóng -->
+    <button type="button" class="toast-reopen-btn" id="toastReopenBtn" aria-label="Mở lại thông báo chào mừng" title="Xem lời chào thời gian thực">
+        <i class="fa-solid fa-bell"></i>
+        <span class="toast-badge-dot"></span>
+    </button>
+
+    <!-- 1. HEADER & NAVIGATION CHUẨN SEMANTIC -->
+    <header class="site-header" id="top-header">
+        <div class="header-container">
+            <a href="#hero" class="brand-logo" aria-label="NexTech Trang Chủ">
+                <span class="logo-badge"><i class="fa-solid fa-microchip"></i></span>
+                <span class="logo-text">NexTech<span class="logo-accent">.io</span></span>
+            </a>
+
+            <nav class="main-navbar" aria-label="Thanh điều hướng chính">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#hero" class="nav-link active">Trang chủ</a></li>
+                    <li class="nav-item"><a href="#products" class="nav-link">Sản phẩm nổi bật</a></li>
+                    <li class="nav-item"><a href="#features" class="nav-link">Công nghệ AI</a></li>
+                    <li class="nav-item"><a href="#light-switch" class="nav-link">Bật/Tắt Đèn</a></li>
+                    <li class="nav-item"><a href="#live-input" class="nav-link">Live Input</a></li>
+                    <li class="nav-item"><a href="#news" class="nav-link">Tin công nghệ</a></li>
+                    <li class="nav-item"><a href="#newsletter" class="nav-link">Đăng ký</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#products" class="btn btn-outline nav-btn">Khám phá</a>
+                <button type="button" class="btn-theme-quick" id="headerThemeBtn" aria-label="Bật/Tắt bóng đèn nhanh" title="Bật/Tắt Đèn (Light Switch)">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </button>
+                <button type="button" class="btn-cart-nav" id="navCartBtn" aria-label="Giỏ hàng công nghệ" title="Xem giỏ hàng đã chọn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count-badge" id="navCartCount">0</span>
+                </button>
+                <a href="#contact" class="btn btn-primary nav-cta">Liên hệ ngay</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Mở menu di động" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. MAIN CONTENT AREA -->
+    <main id="main-content">
+
+        <!-- SECTION 1: HERO BANNER (Ứng dụng Animate.css) -->
+        <section id="hero" class="hero-section" aria-labelledby="hero-heading">
+            <div class="hero-backdrop-glow"></div>
+            <div class="hero-container">
+                <article class="hero-content">
+                    <!-- Real-time Dynamic Greeting Bar (Tuần 8 Logic Puzzle) -->
+                    <div class="realtime-greeting-bar animate__animated animate__fadeInDown" id="heroGreetingBar">
+                        <span class="pulse-indicator"></span>
+                        <i class="fa-solid fa-cloud-sun greeting-icon" id="heroGreetingIcon"></i>
+                        <span class="greeting-text" id="heroGreetingText">Đang tải lời chào thời gian thực...</span>
+                        <span class="greeting-time-tag" id="heroTimeTag">--:--:--</span>
+                        <button type="button" class="btn-simulator-toggle" id="btnToggleSim" title="Mở bộ kiểm thử thời gian (Dành cho Giảng viên)">
+                            <i class="fa-solid fa-sliders"></i> Test logic
+                        </button>
+                    </div>
+
+                    <span class="hero-badge animate__animated animate__fadeInDown">
+                        <i class="fa-solid fa-bolt"></i> Hệ Sinh Thái Công Nghệ Thế Hệ Mới 2026
+                    </span>
+                    <h1 id="hero-heading" class="hero-title animate__animated animate__fadeInLeft">
+                        Định Hình Tương Lai Cùng <span class="text-gradient">Phần Cứng Trí Tuệ Nhân Tạo</span>
+                    </h1>
+                    <p class="hero-description animate__animated animate__fadeInLeft animate__delay-1s">
+                        Trải nghiệm sức mạnh xử lý lượng tử đỉnh cao, màn hình Retina 165Hz siêu mỏng cùng vi xử lý Neural Core độc quyền. Thiết kế cho lập trình viên, nhà sáng tạo và tín đồ công nghệ tương lai.
+                    </p>
+                    <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-1s">
+                        <a href="#products" class="btn btn-primary btn-large">
+                            <i class="fa-solid fa-bag-shopping"></i> Mua ngay hôm nay
+                        </a>
+                        <a href="#features" class="btn btn-glass btn-large">
+                            <i class="fa-solid fa-play"></i> Xem video giới thiệu
+                        </a>
+                    </div>
+                    <ul class="hero-stats animate__animated animate__fadeInUp animate__delay-2s">
+                        <li class="stat-item">
+                            <strong class="stat-number">10x</strong>
+                            <span class="stat-label">Hiệu năng NPU AI</span>
+                        </li>
+                        <li class="stat-divider" aria-hidden="true"></li>
+                        <li class="stat-item">
+                            <strong class="stat-number">08 min</strong>
+                            <span class="stat-label">Sạc siêu tốc Graphene</span>
+                        </li>
+                        <li class="stat-divider" aria-hidden="true"></li>
+                        <li class="stat-item">
+                            <strong class="stat-number">99.8%</strong>
+                            <span class="stat-label">Hài lòng toàn cầu</span>
+                        </li>
+                    </ul>
+                </article>
+
+                <figure class="hero-showcase animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="device-card-glow">
+                        <div class="device-frame">
+                            <div class="device-top-bar">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                                <span class="device-title-tag">NexPro Quantum AI Terminal</span>
+                            </div>
+                            <div class="device-screen">
+                                <div class="hologram-visual">
+                                    <div class="quantum-core">
+                                        <i class="fa-solid fa-brain core-icon"></i>
+                                    </div>
+                                    <div class="orbit-ring ring-1"></div>
+                                    <div class="orbit-ring ring-2"></div>
+                                </div>
+                                <div class="device-specs-overlay">
+                                    <div class="spec-pill"><i class="fa-solid fa-microchip"></i> NPU M4 Quantum</div>
+                                    <div class="spec-pill"><i class="fa-solid fa-wifi"></i> 6G HyperLink</div>
+                                    <div class="spec-pill"><i class="fa-solid fa-shield-halved"></i> Quantum Shield</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        </section>
+
+        <!-- SECTION 2: DANH MỤC THIẾT BỊ CÔNG NGHỆ NỔI BẬT (AOS Scroll Animation) -->
+        <section id="products" class="products-section" aria-labelledby="products-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-category">Hệ Sinh Thái Thiết Bị</span>
+                    <h2 id="products-title" class="section-title">Thiết Bị Công Nghệ Nổi Bật</h2>
+                    <p class="section-description">
+                        Những dòng sản phẩm tiên phong sở hữu công nghệ vi mạch lượng tử và thiết kế kim loại nguyên khối chuẩn hàng không vũ trụ.
+                    </p>
+                </header>
+
+                <!-- =======================================================================
+                     THÁCH THỨC TUẦN 9: "THE SMART INTERFACE" - BỘ ĐIỀU KHIỂN & BỘ LỌC ĐỘNG
+                     Thay vì hardcode HTML tĩnh, dữ liệu được render động qua hàm renderProductList()
+                     ======================================================================= -->
+                <div class="smart-toolbar" data-aos="fade-up" data-aos-delay="100">
+                    <!-- Danh mục lọc theo Category Tabs -->
+                    <div class="filter-categories" id="filterCategories" role="tablist" aria-label="Bộ lọc danh mục sản phẩm">
+                        <button type="button" class="filter-btn active" data-category="all" role="tab" aria-selected="true">
+                            <i class="fa-solid fa-layer-group"></i> Tất cả (<span id="countAll">6</span>)
+                        </button>
+                        <button type="button" class="filter-btn" data-category="phone" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-mobile-screen-button"></i> Điện thoại AI
+                        </button>
+                        <button type="button" class="filter-btn" data-category="laptop" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-laptop-code"></i> Laptop M-Matrix
+                        </button>
+                        <button type="button" class="filter-btn" data-category="spatial" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-vr-cardboard"></i> Không gian AR/VR
+                        </button>
+                        <button type="button" class="filter-btn" data-category="wearable" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-clock"></i> Đồng hồ Sinh trắc
+                        </button>
+                        <button type="button" class="filter-btn" data-category="audio" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-headphones"></i> Âm thanh & Smarthome
+                        </button>
+                    </div>
+
+                    <!-- Thanh tìm kiếm theo thời gian thực & Sắp xếp giá linh hoạt -->
+                    <div class="filter-actions">
+                        <div class="search-input-wrapper">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="productSearchInput" class="search-input" placeholder="Tìm kiếm theo tên thiết bị, công nghệ chip, RAM..." aria-label="Tìm kiếm sản phẩm">
+                            <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Xóa tìm kiếm" aria-label="Xóa tìm kiếm" style="display: none;">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="sort-wrapper">
+                            <label for="productSortSelect" class="visually-hidden">Sắp xếp theo</label>
+                            <select id="productSortSelect" class="sort-select" aria-label="Sắp xếp sản phẩm">
+                                <option value="default">⚡ Nổi bật nhất</option>
+                                <option value="price-asc">💰 Giá tăng dần</option>
+                                <option value="price-desc">💎 Giá giảm dần</option>
+                                <option value="name-asc">🔤 Tên A - Z</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Thanh trạng thái số lượng sản phẩm & Badge Thách thức Tuần 9 -->
+                    <div class="filter-status-bar">
+                        <span class="status-counter" id="productsCount">
+                            <i class="fa-solid fa-microchip"></i> Đang hiển thị: <strong>6</strong> thiết bị thông minh
+                        </span>
+                        <span class="smart-badge">
+                            <i class="fa-solid fa-bolt"></i> Tuần 9: Dynamic JS Loop Rendering
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CONTAINER HIỂN THỊ DANH SÁCH SẢN PHẨM (TỰ ĐỘNG SINH BẰNG HÀM VÒNG LẶP JS) -->
+                <div class="products-grid" id="productsGrid" aria-live="polite">
+                    <!-- Giao diện các thẻ sản phẩm <article class="product-card"> sẽ được hàm renderProductList() tự động sinh bằng vòng lặp JS từ mảng dữ liệu mẫu PRODUCTS_DATA -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CÔNG NGHỆ ĐỘT PHÁ & TÍNH NĂNG ĐẶC TRƯNG -->
+        <section id="features" class="features-section" aria-labelledby="features-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-category">Trụ Cột Đổi Mới</span>
+                    <h2 id="features-title" class="section-title">Tại Sao Nên Chọn Hệ Sinh Thái NexTech?</h2>
+                    <p class="section-description">
+                        Chúng tôi không chỉ sản xuất thiết bị phần cứng đơn thuần — chúng tôi tạo ra trung tâm điều khiển cuộc sống số của bạn.
+                    </p>
+                </header>
+
+                <div class="features-grid">
+                    <article class="feature-card" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h3 class="feature-title">Bộ Xử Lý Neural NPU 5nm</h3>
+                        <p class="feature-desc">
+                            Khả năng tính toán 120 nghìn tỷ phép tính mỗi giây (TOPS), chạy các mô hình ngôn ngữ lớn (LLM) nội bộ ngay trên thiết bị mà không cần gửi dữ liệu lên mây.
+                        </p>
+                    </article>
+
+                    <article class="feature-card" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="feature-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                        <h3 class="feature-title">Bảo Mật Lượng Tử QuantumGuard</h3>
+                        <p class="feature-desc">
+                            Mã hóa bất khả xâm phạm ở cấp độ vi mạch phần cứng. Ngăn chặn triệt để mọi hành vi xâm nhập, đánh cắp danh tính và tấn công mạng từ tương lai.
+                        </p>
+                    </article>
+
+                    <article class="feature-card" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="feature-icon"><i class="fa-solid fa-battery-bolt"></i></div>
+                        <h3 class="feature-title">Pin Thể Rắn Graphene Solid-State</h3>
+                        <p class="feature-desc">
+                            Tăng mật độ lưu trữ năng lượng lên 300%, chống chai pin sau 5000 chu kỳ và thời gian sạc đầy từ 0% lên 100% chỉ trong vỏn vẹn 8 phút.
+                        </p>
+                    </article>
+
+                    <article class="feature-card" data-aos="zoom-in-up" data-aos-delay="400">
+                        <div class="feature-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                        <h3 class="feature-title">Kết Nối 6G Vệ Tinh Toàn Cầu</h3>
+                        <p class="feature-desc">
+                            Đảm bảo thiết bị luôn trong trạng thái trực tuyến với độ trễ dưới 1 mili-giây ở bất kỳ đâu trên Trái Đất, từ sa mạc Sahara đến đại dương sâu thẳm.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================================
+             THÁCH THỨC BUỔI 10 - HOẠT ĐỘNG 2: "LIGHT SWITCH" - BẬT/TẮT BÓNG ĐÈN (45 PHÚT)
+             Tạo nút bấm (id='toggle-btn') và hình ảnh cái đèn (id='bulb-img').
+             Khi bấm nút: thay đổi thuộc tính src từ 'bulb-off.svg' sang 'bulb-on.svg'
+             và đổi màu nền body từ trắng sang đen và ngược lại (Dark/Light mode).
+             ======================================================================= -->
+        <section id="light-switch" class="light-switch-section" aria-labelledby="light-switch-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-category">Thực Hành JavaScript Buổi 10 &bull; Hoạt Động 2</span>
+                    <h2 id="light-switch-title" class="section-title">Hệ Thống Chiếu Sáng Thông Minh "Light Switch"</h2>
+                    <p class="section-description">
+                        Mô phỏng cơ chế bật/tắt bóng đèn lượng tử thông minh. Thao tác trực tiếp trên DOM bằng cách thay đổi thuộc tính <code>src</code> của thẻ ảnh và hoán đổi màu nền giao diện giữa Dark Mode và Light Mode.
+                    </p>
+                </header>
+
+                <div class="light-switch-showcase" data-aos="zoom-in" data-aos-duration="700">
+                    <!-- Khung sân khấu bóng đèn -->
+                    <div class="bulb-display-card">
+                        <div class="bulb-card-glow" id="bulbCardGlow"></div>
+                        
+                        <div class="bulb-status-badge is-off" id="bulbStatusBadge">
+                            <i class="fa-solid fa-power-off"></i> Đèn Đang TẮT &bull; Giao Diện Tối (Dark)
+                        </div>
+
+                        <!-- 
+                            HÌNH ẢNH CÁI ĐÈN: Thay đổi thuộc tính src khi click nút
+                        -->
+                        <figure class="bulb-figure">
+                            <img 
+                                id="bulb-img" 
+                                class="bulb-showcase-img" 
+                                src="assets/bulb-off.svg" 
+                                alt="Bóng đèn đang tắt"
+                                title="Nhấp vào bóng đèn hoặc bấm nút bên dưới để Bật/Tắt"
+                            >
+                            <figcaption class="bulb-caption">
+                                Nhấp trực tiếp vào bóng đèn hoặc bấm nút điều khiển bên dưới
+                            </figcaption>
+                        </figure>
+
+                        <!-- 
+                            NÚT BẤM CÓ ID 'toggle-btn' THEO ĐÚNG YÊU CẦU ĐỀ BÀI
+                        -->
+                        <div class="bulb-control-box">
+                            <button type="button" class="btn btn-primary btn-bulb-toggle" id="toggle-btn" aria-label="Bật/Tắt bóng đèn">
+                                <i class="fa-solid fa-lightbulb" id="bulbBtnIcon"></i>
+                                <span id="bulbBtnText">Bật Đèn (Chuyển Light Mode)</span>
+                            </button>
+                            <a href="light-switch.html" target="_blank" class="btn btn-outline btn-bulb-standalone" title="Mở trang bài tập độc lập">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở trang Lab riêng
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bảng hướng dẫn & kiểm tra tiêu chí chấm bài của Giảng viên -->
+                    <div class="light-switch-specs">
+                        <h3 class="specs-title"><i class="fa-solid fa-circle-check"></i> Tiêu Chí Kỹ Thuật Đạt Chuẩn (Hoạt Động 2)</h3>
+                        <ul class="specs-list">
+                            <li>
+                                <span class="spec-tag"><i class="fa-solid fa-check"></i> DOM Event:</span>
+                                Lắng nghe sự kiện <code>click</code> trên phần tử nút bấm có <code>id="toggle-btn"</code>.
+                            </li>
+                            <li>
+                                <span class="spec-tag"><i class="fa-solid fa-check"></i> Thuộc tính src:</span>
+                                Hoán đổi thuộc tính ảnh <code>bulbImg.src</code> giữa <code>bulb-off.svg</code> &harr; <code>bulb-on.svg</code>.
+                            </li>
+                            <li>
+                                <span class="spec-tag"><i class="fa-solid fa-check"></i> Dark/Light Mode:</span>
+                                Đổi màu nền của <code>body</code> từ đen sang trắng và ngược lại qua <code>classList.toggle('light-mode')</code>.
+                            </li>
+                            <li>
+                                <span class="spec-tag"><i class="fa-solid fa-check"></i> Semantic & UX:</span>
+                                Thẻ Semantic <code>&lt;section&gt;</code>, <code>&lt;figure&gt;</code>, hiệu ứng chuyển màu mượt mà <code>transition: 0.4s</code>.
+                            </li>
+                        </ul>
+
+                        <div class="specs-code-box">
+                            <div class="specs-code-header">
+                                <span><i class="fa-solid fa-terminal"></i> Đoạn mã JS cốt lõi (Core Logic)</span>
+                            </div>
+                            <pre class="specs-code-content"><code>// Lắng nghe sự kiện click trên nút có ID 'toggle-btn'
+const toggleBtn = document.getElementById('toggle-btn');
+const bulbImg = document.getElementById('bulb-img');
+
+toggleBtn.addEventListener('click', () => {
+    isLightOn = !isLightOn;
+    // 1. Đổi thuộc tính src của hình ảnh cái đèn
+    bulbImg.src = isLightOn ? 'assets/bulb-on.svg' : 'assets/bulb-off.svg';
+    // 2. Đổi màu nền của body (Dark/Light Mode)
+    document.body.classList.toggle('light-mode', isLightOn);
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================================
+             THÁCH THỨC BUỔI 10 - HOẠT ĐỘNG 3: "LIVE INPUT" - PHẢN HỒI TỨC THÌ (30 PHÚT)
+             Tạo ô <input>. Khi gõ chữ:
+             - Nội dung lập tức xuất hiện ở thẻ <span> bên cạnh (Hướng dẫn)
+             - Nội dung hiển thị tức thì vào thẻ <h2> bên dưới (Prompt mẫu)
+             ======================================================================= -->
+        <section id="live-input" class="live-input-section" aria-labelledby="live-input-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-category">Thực Hành JavaScript Buổi 10 &bull; Hoạt Động 3</span>
+                    <h2 id="live-input-title" class="section-title">Phản Hồi Tức Thì "Live Input"</h2>
+                    <p class="section-description">
+                        Lắng nghe sự kiện <code>input</code> trong JavaScript để lấy giá trị từ ô text theo thời gian thực và đồng bộ lập tức lên giao diện người dùng.
+                    </p>
+                </header>
+
+                <div class="live-input-showcase" data-aos="zoom-in" data-aos-duration="700">
+                    <!-- Khung nhập liệu & xem trước -->
+                    <div class="live-input-card">
+                        <!-- 1. Ô <input> và thẻ <span> bên cạnh theo Hướng dẫn -->
+                        <div class="input-field-wrapper">
+                            <label for="mainLiveInput" class="input-card-label">
+                                <i class="fa-regular fa-keyboard"></i> Nhập văn bản thử nghiệm:
+                            </label>
+                            
+                            <div class="input-side-flex">
+                                <input 
+                                    type="text" 
+                                    id="mainLiveInput" 
+                                    class="cyber-input" 
+                                    placeholder="Gõ bất kỳ ký tự nào để trải nghiệm phản hồi trực tiếp..."
+                                    autocomplete="off"
+                                >
+                                <!-- THẺ SPAN BÊN CẠNH -->
+                                <div class="side-preview-span" title="Thẻ <span> phản hồi tức thì bên cạnh">
+                                    <span class="side-pill-badge">&lt;span&gt;</span>
+                                    <span id="mainLiveSpan" class="side-pill-text">(chưa nhập)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Thẻ <h2> hiển thị bên dưới theo Prompt mẫu -->
+                        <div class="live-h2-container">
+                            <div class="live-h2-header">
+                                <span class="h2-pulse-status">
+                                    <span class="live-dot"></span> THẺ &lt;h2&gt; HIỂN THỊ TỨC THÌ BÊN DƯỚI
+                                </span>
+                                <span class="char-badge" id="mainLiveCharCount">0 ký tự</span>
+                            </div>
+                            <!-- THẺ H2 HIỂN THỊ TRỰC TIẾP -->
+                            <h2 id="mainLiveHeading" class="live-h2-preview empty">
+                                Nội dung bạn nhập sẽ xuất hiện ngay lập tức tại đây...
+                            </h2>
+                        </div>
+
+                        <!-- Nút tiện ích & liên kết file lab độc lập -->
+                        <div class="live-card-actions">
+                            <button type="button" class="btn btn-outline btn-sm" id="mainLiveClearBtn">
+                                <i class="fa-solid fa-rotate-left"></i> Xóa nhanh
+                            </button>
+                            <a href="live-input.html" target="_blank" class="btn btn-primary btn-sm" title="Mở file bài tập riêng biệt">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở trang Lab riêng
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bảng tiêu chí kỹ thuật Hoạt động 3 -->
+                    <div class="live-input-specs">
+                        <h3 class="specs-title"><i class="fa-solid fa-circle-check"></i> Tiêu Chí Kỹ Thuật Đạt Chuẩn (Hoạt Động 3)</h3>
+                        <ul class="specs-list">
+                            <li>
+                                <span class="spec-tag"><i class="fa-solid fa-check"></i> Sự kiện 'input':</span>
+                                Sử dụng <code>addEventListener('input', ...)</code> thay vì <code>change</code> để bắt từng phím gõ theo thời gian thực (Real-time).
+                            </li>
+                            <li>
+                                <span class="spec-tag"><i class="fa-solid fa-check"></i> Thẻ &lt;span&gt; bên cạnh:</span>
+                                Cập nhật thuộc tính <code>liveSpan.textContent = value</code> ngay lập tức khi người dùng gõ chữ.
+                            </li>
+                            <li>
+                                <span class="spec-tag"><i class="fa-solid fa-check"></i> Thẻ &lt;h2&gt; bên dưới:</span>
+                                Lấy giá trị từ ô text và hiển thị tức thời vào thẻ <code>&lt;h2&gt;</code> theo đúng Prompt mẫu.
+                            </li>
+                            <li>
+                                <span class="spec-tag"><i class="fa-solid fa-check"></i> Xử lý Trạng thái:</span>
+                                Xử lý trường hợp chuỗi rỗng để hiển thị placeholder thông minh, tránh làm layout bị nhảy (layout shift).
+                            </li>
+                        </ul>
+
+                        <div class="specs-code-box">
+                            <div class="specs-code-header">
+                                <span><i class="fa-solid fa-terminal"></i> Đoạn mã JS cốt lõi (Core Logic)</span>
+                            </div>
+                            <pre class="specs-code-content"><code>// Lắng nghe sự kiện 'input' trên ô text
+const inputField = document.getElementById('mainLiveInput');
+const liveSpan   = document.getElementById('mainLiveSpan');
+const liveH2     = document.getElementById('mainLiveHeading');
+
+inputField.addEventListener('input', (e) => {
+    const val = e.target.value;
+    // Cập nhật thẻ span bên cạnh
+    liveSpan.textContent = val || '(chưa nhập)';
+    // Cập nhật thẻ h2 bên dưới
+    liveH2.textContent = val || 'Nội dung sẽ xuất hiện tại đây...';
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: TIN TỨC CÔNG NGHỆ MỚI NHẤT (Semantic <article>) -->
+        <section id="news" class="news-section" aria-labelledby="news-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-category">Bản Tin & Xu Hướng</span>
+                    <h2 id="news-title" class="section-title">Tin Tức Công Nghệ Nổi Bật</h2>
+                    <p class="section-description">
+                        Cập nhật các bước chuyển mình quan trọng của ngành công nghệ bán dẫn, trí tuệ nhân tạo và khoa học vi tính thế giới.
+                    </p>
+                </header>
+
+                <div class="news-grid">
+                    <!-- News 1 -->
+                    <article class="news-card" data-aos="fade-up" data-aos-delay="100">
+                        <figure class="news-image-wrapper">
+                            <div class="news-placeholder-img img-ai">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <span class="news-tag">AI & Machine Learning</span>
+                        </figure>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <time datetime="2026-10-18"><i class="fa-regular fa-calendar"></i> 18/10/2026</time>
+                                <span class="news-author"><i class="fa-regular fa-user"></i> Lê Cao Duy Khang</span>
+                            </div>
+                            <h3 class="news-headline">
+                                <a href="#news" class="headline-link">Kỷ Nguyên On-Device AI: Khi Trí Tuệ Nhân Tạo Không Cần Đám Mây</a>
+                            </h3>
+                            <p class="news-summary">
+                                Các thế hệ chip NPU mới đang tái định hình cách thiết bị thông minh xử lý tác vụ phức tạp, giúp bảo mật dữ liệu tuyệt đối và triệt tiêu độ trễ mạng...
+                            </p>
+                            <a href="#news" class="read-more-btn">
+                                Đọc chi tiết <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- News 2 -->
+                    <article class="news-card" data-aos="fade-up" data-aos-delay="200">
+                        <figure class="news-image-wrapper">
+                            <div class="news-placeholder-img img-quantum">
+                                <i class="fa-solid fa-atom"></i>
+                            </div>
+                            <span class="news-tag">Điện Toán Lượng Tử</span>
+                        </figure>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <time datetime="2026-10-15"><i class="fa-regular fa-calendar"></i> 15/10/2026</time>
+                                <span class="news-author"><i class="fa-regular fa-user"></i> Ban Biên Tập Tech</span>
+                            </div>
+                            <h3 class="news-headline">
+                                <a href="#news" class="headline-link">Đột Phá Bán Dẫn 1nm: Giới Hạn Vật Lý Mới Của Silicon Đã Bị Phá Vỡ</a>
+                            </h3>
+                            <p class="news-summary">
+                                Viện nghiên cứu vật liệu bán dẫn công bố kiến trúc bóng bán dẫn Gate-All-Around thế hệ mới, mở đường cho những siêu máy tính bỏ túi...
+                            </p>
+                            <a href="#news" class="read-more-btn">
+                                Đọc chi tiết <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- News 3 -->
+                    <article class="news-card" data-aos="fade-up" data-aos-delay="300">
+                        <figure class="news-image-wrapper">
+                            <div class="news-placeholder-img img-spatial">
+                                <i class="fa-solid fa-cubes"></i>
+                            </div>
+                            <span class="news-tag">Không Gian Số (Spatial)</span>
+                        </figure>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <time datetime="2026-10-12"><i class="fa-regular fa-calendar"></i> 12/10/2026</time>
+                                <span class="news-author"><i class="fa-regular fa-user"></i> Nhóm Nghiên Cứu</span>
+                            </div>
+                            <h3 class="news-headline">
+                                <a href="#news" class="headline-link">Điện Toán Không Gian Thay Đổi Môi Trường Làm Việc Toàn Cầu Ra Sao?</a>
+                            </h3>
+                            <p class="news-summary">
+                                Từ thiết kế kiến trúc 3D đến phẫu thuật từ xa, các thiết bị Spatial Computing đang dần thay thế màn hình máy tính truyền thống...
+                            </p>
+                            <a href="#news" class="read-more-btn">
+                                Đọc chi tiết <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: FORM ĐĂNG KÝ NHẬN TIN CÔNG NGHỆ (NEWSLETTER FORM) -->
+        <section id="newsletter" class="newsletter-section" aria-labelledby="newsletter-title" data-aos="zoom-in">
+            <div class="newsletter-card">
+                <div class="newsletter-content">
+                    <span class="newsletter-sub">Nhận Tin Sớm & Khuyến Mãi Độc Quyền</span>
+                    <h2 id="newsletter-title" class="newsletter-title">Gia Nhập Cộng Đồng Công Nghệ NexTech</h2>
+                    <p class="newsletter-desc">
+                        Đăng ký ngay hôm nay để nhận thông báo ra mắt sản phẩm mới nhất, bản tin phân tích xu hướng công nghệ hàng tuần và mã giảm giá 15% cho đơn hàng đầu tiên.
+                    </p>
+                    <form class="newsletter-form" id="subscribeForm" action="#" method="POST" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký nhận tin từ NexTech!');">
+                        <div class="form-group">
+                            <label for="subscriber-email" class="visually-hidden">Địa chỉ Email của bạn</label>
+                            <div class="input-wrapper">
+                                <i class="fa-regular fa-envelope input-icon"></i>
+                                <input type="email" id="subscriber-email" name="email" class="form-input" placeholder="Nhập địa chỉ email của bạn..." required>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <span>Đăng ký ngay</span> <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <p class="form-privacy-note">
+                            <i class="fa-solid fa-lock"></i> Chúng tôi cam kết bảo mật 100% dữ liệu email. Bạn có thể hủy đăng ký bất kỳ lúc nào.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 3. FOOTER CHUẨN SEMANTIC -->
+    <footer class="site-footer" id="contact">
+        <div class="footer-top">
+            <div class="footer-container">
+                <!-- Col 1: Brand Info -->
+                <div class="footer-col brand-col">
+                    <a href="#hero" class="brand-logo footer-logo" aria-label="NexTech Trang Chủ">
+                        <span class="logo-badge"><i class="fa-solid fa-microchip"></i></span>
+                        <span class="logo-text">NexTech<span class="logo-accent">.io</span></span>
+                    </a>
+                    <p class="brand-bio">
+                        Nền tảng tiên phong cung cấp thiết bị phần cứng tích hợp trí tuệ nhân tạo và bản tin công nghệ chuyên sâu phục vụ cộng đồng công nghệ Việt Nam và toàn cầu.
+                    </p>
+                    <div class="social-links" aria-label="Liên kết mạng xã hội">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Liên Kết Nhanh</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Trang chủ</a></li>
+                        <li><a href="#products">Sản phẩm nổi bật</a></li>
+                        <li><a href="#features">Công nghệ đột phá</a></li>
+                        <li><a href="#news">Bản tin công nghệ</a></li>
+                        <li><a href="#newsletter">Đăng ký nhận tin</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Categories -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Danh Mục Thiết Bị</h4>
+                    <ul class="footer-links">
+                        <li><a href="#products">Điện thoại AI Flagship</a></li>
+                        <li><a href="#products">Laptop Workstation M-Matrix</a></li>
+                        <li><a href="#products">Kính thực tế không gian 8K</a></li>
+                        <li><a href="#products">Đồng hồ thông minh Sinh trắc</a></li>
+                        <li><a href="#products">Phụ kiện sạc siêu tốc</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact & University Info -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Thông Tin Đồ Án</h4>
+                    <address class="contact-info">
+                        <p><i class="fa-solid fa-user-graduate"></i> <strong>Sinh viên:</strong> Lê Cao Duy Khang</p>
+                        <p><i class="fa-solid fa-id-card"></i> <strong>MSSV:</strong> 125000847</p>
+                        <p><i class="fa-solid fa-book-open"></i> <strong>Học phần:</strong> Thiết kế Web (Giữa kỳ)</p>
+                        <p><i class="fa-solid fa-school"></i> <strong>Khoa:</strong> Công nghệ Thông tin</p>
+                        <p><i class="fa-solid fa-location-dot"></i> <strong>Trường:</strong> Đại học Lạc Hồng (LHU)</p>
+                        <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> 125000847@lhu.edu.vn</p>
+                    </address>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p class="copyright-text">
+                    &copy; 2026 <strong>NexTech.io</strong> - Bài thi Giữa kỳ môn Thiết kế Web. Thiết kế & Phát triển bởi <strong>Lê Cao Duy Khang (MSSV: 125000847)</strong>.
+                </p>
+                <div class="footer-legal-links">
+                    <a href="#">Điều khoản sử dụng</a>
+                    <span class="sep">&bull;</span>
+                    <a href="#">Chính sách bảo mật</a>
+                    <span class="sep">&bull;</span>
+                    <a href="#">Báo cáo đồ án</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Nút Cuộn Lên Đầu Trang (Back to top) -->
+    <a href="#hero" class="back-to-top" id="backToTop" aria-label="Cuộn lên đầu trang">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- Thư viện AOS (Animate On Scroll) CDN JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Kịch bản kích hoạt và cấu hình AOS & tương tác giao diện -->
+    <script>
+        // 1. Kích hoạt thư viện AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,        // Thời gian diễn ra hiệu ứng (800ms)
+            once: true,           // Chỉ chạy hiệu ứng một lần khi cuộn qua
+            offset: 100,          // Khoảng cách kích hoạt trước khi phần tử xuất hiện
+            easing: 'ease-out-cubic' // Gia tốc chuyển động tự nhiên
+        });
+
+        // 2. Xử lý Toggle Menu di động
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.querySelector('.main-navbar');
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                mainNav.classList.toggle('is-open');
+                menuToggle.innerHTML = isExpanded 
+                    ? '<i class="fa-solid fa-bars"></i>' 
+                    : '<i class="fa-solid fa-xmark"></i>';
+            });
+        }
+
+        // Đóng menu khi nhấp vào link điều hướng (trên mobile)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('is-open')) {
+                    mainNav.classList.remove('is-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                }
+            });
+        });
+
+        // 3. Hiển thị nút Cuộn Lên Đầu Trang khi cuộn quá 300px
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+    </script>
+
+    <!-- =======================================================================
+         THÁCH THỨC TUẦN 9: "THE SMART INTERFACE"
+         Toast phản hồi tương tác mua hàng & Modal Giỏ hàng công nghệ
+         ======================================================================= -->
+    <aside class="cart-action-toast" id="cartActionToast" role="status" aria-live="polite">
+        <div class="cart-toast-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="cart-toast-content">
+            <h4 class="cart-toast-title">Đã chọn thiết bị!</h4>
+            <p class="cart-toast-text" id="cartToastText">Sản phẩm đã được thêm vào đơn hàng của bạn.</p>
+        </div>
+        <button type="button" class="cart-toast-close" id="cartToastClose" aria-label="Đóng thông báo"><i class="fa-solid fa-xmark"></i></button>
+    </aside>
+
+    <!-- Modal Xem Giỏ Hàng Công Nghệ -->
+    <div class="cart-modal-backdrop" id="cartModalBackdrop" aria-hidden="true">
+        <div class="cart-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle">
+            <div class="cart-modal-header">
+                <div class="cart-modal-title-box">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <h3 id="cartModalTitle">Giỏ Hàng Công Nghệ AI</h3>
+                </div>
+                <button type="button" class="cart-modal-close" id="cartModalClose" aria-label="Đóng giỏ hàng">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="cart-modal-body" id="cartModalItems">
+                <!-- Danh sách sản phẩm trong giỏ hàng sẽ được render động -->
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-total-row">
+                    <span>Tổng tạm tính:</span>
+                    <strong class="cart-total-price" id="cartTotalPrice">0₫</strong>
+                </div>
+                <div class="cart-modal-actions">
+                    <button type="button" class="btn btn-outline btn-sm" id="cartClearBtn">
+                        <i class="fa-solid fa-trash-can"></i> Xóa tất cả
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" id="cartCheckoutBtn">
+                        <i class="fa-solid fa-credit-card"></i> Tiến hành đặt hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kịch bản Thách thức Tuần 8 & 9: Realtime Greeting + The Smart Interface Dynamic Loop Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
