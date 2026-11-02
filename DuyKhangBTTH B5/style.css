@@ -1,0 +1,445 @@
+/* ==========================================================================
+   BRAND STYLE EXPLORER - DYNAMIC THEME & CSS VARIABLES STYLESHEET
+   Bao gồm:
+   - Bước 1: Khởi tạo biến màu (:root)
+   - Bước 2: Ghi đè biến màu trong .dark-theme
+   - Bước 3: Hỗ trợ dynamic theme font & primary-color từ JavaScript
+   ========================================================================== */
+
+/* 1. BƯỚC 1: KHỞI TẠO BIẾN TRONG BỘ CHỌN :root */
+:root {
+    /* Biến màu chủ đạo (Mặc định: Eco Green) */
+    --primary-color: #10b981;
+    --primary-glow: rgba(16, 185, 129, 0.3);
+    --primary-hover: #059669;
+
+    /* Biến màu nền & chữ (Light Mode) */
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --text-color: #1e293b;
+    --text-muted: #64748b;
+
+    /* Biến Typography (Mặc định: Quicksand tròn trịa cho Eco) */
+    --font-main: 'Quicksand', sans-serif;
+
+    /* Biến kích thước & đổ bóng */
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --radius-pill: 9999px;
+    --shadow-card: 0 15px 35px rgba(0, 0, 0, 0.06);
+
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2. BƯỚC 2: CHẾ ĐỘ DARK MODE (.dark-theme GHI ĐÈ GIÁ TRỊ BIẾN) */
+body.dark-theme {
+    --bg-color: #0b0f19;
+    --card-bg: #151b28;
+    --border-color: #242e42;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --shadow-card: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* 3. RESET & BASE STYLES SỬ DỤNG CSS VARIABLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    min-height: 100vh;
+    line-height: 1.6;
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+/* 4. HEADER SỬ DỤNG CSS VARIABLES */
+.app-header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: var(--transition-smooth);
+}
+
+.header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    transition: var(--transition-smooth);
+}
+
+.logo-symbol {
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+/* BRAND SWITCHER NÚT BẤM (BƯỚC 3) */
+.brand-switcher-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-color);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+}
+
+.switcher-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.brand-btn-group {
+    display: flex;
+    gap: 6px;
+}
+
+.theme-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.theme-btn:hover {
+    color: var(--text-color);
+    background: var(--card-bg);
+}
+
+.theme-btn.active {
+    background: var(--card-bg);
+    color: var(--primary-color);
+    border-color: var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-eco {
+    background-color: #10b981;
+}
+
+.dot-luxury {
+    background-color: #d4af37;
+}
+
+.dot-cyberpunk {
+    background-color: #00f0ff;
+}
+
+/* DARK/LIGHT MODE TOGGLE (BƯỚC 2) */
+.mode-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    transition: var(--transition-smooth);
+}
+
+.mode-toggle-btn:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+/* 5. MAIN CONTENT & HERO SECTION */
+.main-content {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 60px 24px 80px 24px;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.theme-badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--primary-color);
+    background-color: var(--primary-glow);
+    border: 1px solid var(--primary-color);
+    transition: var(--transition-smooth);
+}
+
+.hero-headline {
+    font-family: var(--font-main);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-color);
+    transition: var(--transition-smooth);
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    transition: var(--transition-smooth);
+}
+
+/* BUTTONS SỬ DỤNG --PRIMARY-COLOR (BƯỚC 1) */
+.hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.btn-brand-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    box-shadow: 0 8px 24px var(--primary-glow);
+    transition: var(--transition-smooth);
+}
+
+.btn-brand-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.btn-brand-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 24px;
+    background: transparent;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-brand-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* REAL-TIME CSS VARIABLES INSPECTOR */
+.css-variables-inspector {
+    margin-top: 16px;
+    background-color: var(--card-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    transition: var(--transition-smooth);
+}
+
+.inspector-header {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.variables-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    font-size: 0.8rem;
+}
+
+.variable-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.variable-item code {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.variable-value {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.color-preview {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--border-color);
+}
+
+/* 6. VISUAL SHOWCASE CARD */
+.hero-visual-block {
+    display: flex;
+    justify-content: center;
+}
+
+.brand-showcase-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.card-glow {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 220px;
+    background: var(--primary-glow);
+    filter: blur(60px);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-visual-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+}
+
+.brand-showcase-card h3 {
+    font-family: var(--font-main);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+}
+
+.brand-showcase-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 24px;
+}
+
+.card-stats {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    z-index: 2;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-family: var(--font-main);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    transition: var(--transition-smooth);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* 7. RESPONSIVE BREAKPOINT */
+@media (max-width: 900px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .brand-switcher-wrapper {
+        justify-content: space-between;
+    }
+}

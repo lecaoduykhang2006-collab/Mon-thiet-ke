@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Task Dashboard - Quản Lý Công Việc Chuyên Nghiệp</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Layout chính với CSS Grid: Sidebar & Main Content -->
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR BÊN TRÁI -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">⚡</div>
+                <div>
+                    <h2>AI Dashboard</h2>
+                    <span class="sub-brand">Student & Task Manager</span>
+                </div>
+            </div>
+
+            <!-- Ô TÌM KIẾM THEO THỜI GIAN THỰC (BƯỚC 5: TÍNH NĂNG MỞ RỘNG) -->
+            <div class="search-section">
+                <label for="searchInput" class="section-label">🔍 TÌM KIẾM CÔNG VIỆC</label>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm...">
+                    <button id="clearSearchBtn" title="Xóa tìm kiếm">&times;</button>
+                </div>
+            </div>
+
+            <!-- BỘ LỌC NHANH TRẠNG THÁI -->
+            <div class="filter-section">
+                <span class="section-label">LỌC THEO MỨC ĐỘ</span>
+                <div class="filter-chips">
+                    <button class="filter-chip active" data-filter="all">Tất cả</button>
+                    <button class="filter-chip" data-filter="high">Quan trọng</button>
+                    <button class="filter-chip" data-filter="medium">Bình thường</button>
+                    <button class="filter-chip" data-filter="low">Thấp</button>
+                </div>
+            </div>
+
+            <!-- THẺ THỐNG KÊ (DỮ LIỆU GIẢ LẬP) -->
+            <div class="stats-section">
+                <span class="section-label">THỐNG KÊ HỆ THỐNG</span>
+                <div class="stat-card">
+                    <div class="stat-icon">🎓</div>
+                    <div class="stat-info">
+                        <span class="stat-value">1,248</span>
+                        <span class="stat-title">Tổng số sinh viên</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-info">
+                        <span class="stat-value">94.6%</span>
+                        <span class="stat-title">Tỉ lệ qua môn</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏫</div>
+                    <div class="stat-info">
+                        <span class="stat-value">32</span>
+                        <span class="stat-title">Số lớp đang mở</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THÔNG BÁO TIN TỨC (NEWS WIDGET) -->
+            <div class="news-widget">
+                <div class="news-header">
+                    <span>📢 THÔNG BÁO HỌC VỤ</span>
+                </div>
+                <p class="news-content">
+                    <strong>Lịch thi học kỳ:</strong> Bắt đầu từ <strong>15/12</strong>. Sinh viên kiểm tra lại danh
+                    sách phòng
+                    thi và mang theo thẻ sinh viên hợp lệ.
+                </p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT BÊN PHẢI -->
+        <main class="main-content">
+
+            <!-- HEADER: CHÀO HỎI, ĐỒNG HỒ THỜI GIAN THỰC & CHẾ ĐỘ DARK MODE -->
+            <header class="dashboard-header">
+                <div class="welcome-group">
+                    <h1 id="greetingText">Chào Phúc, hôm nay bạn thế nào? 👋</h1>
+                    <p class="subtitle">Quản lý mục tiêu và tiến độ công việc hàng ngày hiệu quả</p>
+                </div>
+
+                <div class="header-actions">
+                    <!-- Đồng hồ thời gian thực -->
+                    <div class="clock-badge">
+                        <span class="clock-icon">🕒</span>
+                        <span id="liveClock">00:00:00</span>
+                    </div>
+
+                    <!-- Nút chuyển đổi Dark Mode (Bước 5) -->
+                    <div class="theme-switch-wrapper">
+                        <button id="themeToggleBtn" class="theme-toggle" aria-label="Đổi giao diện">
+                            <span id="themeIcon">🌙</span>
+                            <span id="themeLabel">Dark</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- KHU VỰC NHẬP CÔNG VIỆC (INPUT SECTION & PRIORITY SELECT) -->
+            <section class="task-input-section">
+                <div class="input-card">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" id="taskInput"
+                                placeholder="Nhập tên công việc cần hoàn thành (ví dụ: Nộp bài tập lớn Web)..."
+                                autocomplete="off">
+                        </div>
+
+                        <!-- PHÂN LOẠI MỨC ĐỘ ƯU TIÊN (BƯỚC 5) -->
+                        <div class="priority-group">
+                            <label for="prioritySelect">Mức độ:</label>
+                            <select id="prioritySelect">
+                                <option value="high">🔴 Quan trọng</option>
+                                <option value="medium" selected>🟡 Bình thường</option>
+                                <option value="low">🟢 Thấp</option>
+                            </select>
+                        </div>
+
+                        <button id="addTaskBtn" class="btn btn-primary">
+                            <span class="btn-icon">➕</span> Thêm
+                        </button>
+                    </div>
+                    <div id="inputMessage" class="input-message"></div>
+                </div>
+            </section>
+
+            <!-- DANH SÁCH CÔNG VIỆC (TASK LIST) -->
+            <section class="task-list-section">
+                <div class="section-header">
+                    <h3>Danh Sách Công Việc</h3>
+                    <div class="list-summary-badge" id="listStatusBadge">0 công việc</div>
+                </div>
+
+                <!-- Danh sách ul được DOM Manipulation xử lý -->
+                <ul id="taskList" class="task-list">
+                    <!-- JS sẽ render dynamic các mục li vào đây -->
+                </ul>
+
+                <!-- Trạng thái trống khi chưa có công việc -->
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-icon">📝</div>
+                    <h4>Chưa có công việc nào!</h4>
+                    <p>Hãy thêm công việc mới ở khung phía trên để bắt đầu ngày làm việc năng suất.</p>
+                </div>
+            </section>
+
+            <!-- FOOTER: HIỂN THỊ TỔNG SỐ CÔNG VIỆC VÀ NÚT TIỆN ÍCH -->
+            <footer class="dashboard-footer">
+                <div class="footer-stats">
+                    <span>Tổng số: <strong id="totalTaskCount">0</strong> công việc</span>
+                    <span class="divider">•</span>
+                    <span>Hoàn thành: <strong id="completedTaskCount">0</strong></span>
+                    <span class="divider">•</span>
+                    <span>Còn lại: <strong id="pendingTaskCount">0</strong></span>
+                </div>
+                <div class="footer-actions">
+                    <button id="clearCompletedBtn" class="btn btn-outline" title="Xóa tất cả việc đã hoàn thành">
+                        🧹 Dọn việc đã xong
+                    </button>
+                </div>
+            </footer>
+
+            <!-- PHẦN DỮ LIỆU BỔ SUNG: DANH SÁCH 5 SINH VIÊN TIÊU BIỂU (MOCK DATA DASHBOARD) -->
+            <section class="mock-data-section">
+                <div class="section-header">
+                    <h3>Bảng Xếp Hạng Sinh Viên Tiêu Biểu</h3>
+                    <span class="badge-role">Phòng Quản Lý Đào Tạo</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="student-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Họ và Tên</th>
+                                <th>MSSV</th>
+                                <th>Điểm TB (GPA)</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Nguyễn Văn Phúc</strong></td>
+                                <td>SV2024001</td>
+                                <td><span class="gpa-badge high">3.85 / 4.0</span></td>
+                                <td><span class="status-badge active">Đang học</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><strong>Trần Thị Mai Lan</strong></td>
+                                <td>SV2024018</td>
+                                <td><span class="gpa-badge high">3.92 / 4.0</span></td>
+                                <td><span class="status-badge active">Đang học</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><strong>Lê Hoàng Long</strong></td>
+                                <td>SV2024045</td>
+                                <td><span class="gpa-badge med">3.40 / 4.0</span></td>
+                                <td><span class="status-badge active">Đang học</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><strong>Phạm Minh Khang</strong></td>
+                                <td>SV2023112</td>
+                                <td><span class="gpa-badge warning">1.82 / 4.0</span></td>
+                                <td><span class="status-badge warning">Cảnh báo</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><strong>Võ Ngọc Bích</strong></td>
+                                <td>SV2024090</td>
+                                <td><span class="gpa-badge high">3.78 / 4.0</span></td>
+                                <td><span class="status-badge active">Đang học</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

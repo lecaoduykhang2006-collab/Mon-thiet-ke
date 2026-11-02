@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Style Explorer | Dynamic Theme & CSS Variables</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts cho 3 phong cách thương hiệu:
+       1. Quicksand: Tròn trịa, thân thiện (Eco Green)
+       2. Playfair Display: Có chân quý phái, đẳng cấp (Luxury Gold)
+       3. Orbitron: Góc cạnh công nghệ cao, viễn tưởng (Cyberpunk Neon)
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Orbitron:wght@700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- BƯỚC 1: HEADER SỬ DỤNG CSS VARIABLES -->
+    <header class="app-header">
+        <div class="header-container">
+
+            <!-- LOGO ĐỔI THEO BRAND -->
+            <div class="brand-logo" id="brandLogo">
+                <span class="logo-symbol" id="logoSymbol">🌿</span>
+                <span class="logo-text" id="logoText">EcoSphere</span>
+            </div>
+
+            <!-- BƯỚC 3: BỘ CHUYỂN ĐỔI BRAND THEME (BRAND SWITCHER) -->
+            <div class="brand-switcher-wrapper">
+                <span class="switcher-label">Chọn Brand:</span>
+                <div class="brand-btn-group">
+                    <button class="theme-btn active" data-theme="eco">
+                        <span class="btn-dot dot-eco"></span> Eco Green
+                    </button>
+                    <button class="theme-btn" data-theme="luxury">
+                        <span class="btn-dot dot-luxury"></span> Luxury Gold
+                    </button>
+                    <button class="theme-btn" data-theme="cyberpunk">
+                        <span class="btn-dot dot-cyberpunk"></span> Cyberpunk
+                    </button>
+                </div>
+            </div>
+
+            <!-- BƯỚC 2: NÚT CHUYỂN ĐỔI DARK / LIGHT MODE -->
+            <div class="mode-toggle-area">
+                <button id="modeToggleBtn" class="mode-toggle-btn" title="Chuyển chế độ Sáng / Tối">
+                    <span class="mode-icon" id="modeIcon">🌙</span>
+                    <span class="mode-text" id="modeText">Dark Mode</span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- NỘI DUNG CHÍNH (HERO & BRAND SHOWCASE) -->
+    <main class="main-content">
+        <div class="hero-container">
+
+            <!-- PHẦN TEXT ĐỔI ĐỘNG (DYNAMIC CONTENT THEO THEME) -->
+            <div class="hero-text-block">
+                <div class="theme-badge" id="themeBadge">🌱 THƯƠNG HIỆU SINH THÁI BỀN VỮNG</div>
+                <h1 class="hero-headline" id="heroHeadline">
+                    Kiến Tạo Lối Sống Xanh, Hòa Nhịp Cùng Thiên Nhiên
+                </h1>
+                <p class="hero-description" id="heroDescription">
+                    Mỗi sản phẩm là một lời cam kết giảm thiểu dấu chân carbon, tôn vinh nguồn nguyên liệu tái sinh hữu
+                    cơ và gìn giữ màu xanh nguyên bản của Trái Đất cho các thế hệ tương lai.
+                </p>
+
+                <!-- NÚT HÀNH ĐỘNG SỬ DỤNG --PRIMARY-COLOR -->
+                <div class="hero-cta-group">
+                    <button class="btn-brand-primary" id="ctaBtn">
+                        <span id="ctaBtnText">Khám Phá Bộ Sưu Tập Xanh</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="btn-brand-secondary" id="secondaryBtn">
+                        Tìm hiểu câu chuyện
+                    </button>
+                </div>
+
+                <!-- BẢNG THEO DÕI BIẾN CSS THỜI GIAN THỰC (REAL-TIME CSS VARIABLES INSPECTOR) -->
+                <div class="css-variables-inspector">
+                    <div class="inspector-header">
+                        <span>⚙️ CSS VARIABLES REAL-TIME MONITOR</span>
+                    </div>
+                    <div class="variables-list">
+                        <div class="variable-item">
+                            <code>--primary-color:</code>
+                            <span class="variable-value" id="valPrimary">#10b981</span>
+                            <span class="color-preview" id="previewPrimary"></span>
+                        </div>
+                        <div class="variable-item">
+                            <code>--font-main:</code>
+                            <span class="variable-value" id="valFont">'Quicksand', sans-serif</span>
+                        </div>
+                        <div class="variable-item">
+                            <code>--bg-color:</code>
+                            <span class="variable-value" id="valBg">#ffffff</span>
+                        </div>
+                        <div class="variable-item">
+                            <code>--text-color:</code>
+                            <span class="variable-value" id="valText">#1e293b</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHẦN VISUAL CARD THAY ĐỔI THEO BRAND -->
+            <div class="hero-visual-block">
+                <div class="brand-showcase-card" id="showcaseCard">
+                    <div class="card-glow"></div>
+                    <div class="card-visual-icon" id="cardVisualIcon">🍃</div>
+                    <h3 id="cardVisualTitle">Thuần Tự Nhiên</h3>
+                    <p id="cardVisualDesc">100% Phân hủy sinh học, không nhựa vi sinh.</p>
+                    <div class="card-stats">
+                        <div class="stat-box">
+                            <span class="stat-number" id="stat1Value">0%</span>
+                            <span class="stat-label" id="stat1Label">Rác thải nhựa</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number" id="stat2Value">100%</span>
+                            <span class="stat-label" id="stat2Label">Tái chế hữu cơ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

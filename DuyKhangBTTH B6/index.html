@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Interactions Studio | Custom Cursor, Parallax & Magnetic Button</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Syne (Artistic) & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- BƯỚC 1: CON TRỎ CHUỘT TÙY CHỈNH (CUSTOM CURSOR) -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-circle" id="cursorCircle"></div>
+
+    <!-- THANH ĐIỀU HƯỚNG TỐI GIẢN -->
+    <nav class="studio-nav">
+        <div class="nav-brand">
+            <span class="brand-glyph">✦</span> NEXUS INTERACTIVE
+        </div>
+        <div class="nav-links">
+            <a href="#hero" class="magnetic-target">Hero</a>
+            <a href="#quotes" class="magnetic-target">Triết Lý</a>
+            <a href="#playground" class="magnetic-target">Thử Nghiệm</a>
+        </div>
+    </nav>
+
+    <!-- BƯỚC 2: HERO SECTION CÓ HIỆU ỨNG PARALLAX KHI CUỘN TRANG -->
+    <header class="parallax-hero" id="hero">
+        <!-- LỚP HÌNH NỀN PARALLAX DI CHUYỂN CHẬM HƠN (TỐC ĐỘ 0.5X) -->
+        <div class="parallax-bg" id="parallaxBg"></div>
+        <div class="parallax-overlay"></div>
+
+        <div class="hero-inner container">
+            <div class="hero-badge">EXPERIMENTAL UI/UX LAB 2026</div>
+            <h1 class="hero-title">
+                GIAO THOA GIỮA<br>
+                <span class="gradient-text">NGHỆ THUẬT & VẬT LÝ</span>
+            </h1>
+            <p class="hero-subtitle">
+                Trải nghiệm sự liền mạch của không gian tương tác thế hệ mới: Con trỏ chuột quán tính, cuộn trang
+                Parallax đa tầng và nút bấm nam châm sống động.
+            </p>
+
+            <!-- BƯỚC 3: NÚT BẤM NAM CHÂM (MAGNETIC BUTTON) -->
+            <div class="magnetic-wrapper">
+                <button class="magnetic-btn" id="heroMagneticBtn" data-strength="35">
+                    <span class="btn-text">Trải Nghiệm Ngay</span>
+                    <span class="btn-ripple"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 5 CÂU NÓI TRUYỀN CẢM HỨNG VỀ SÁNG TẠO & CÔNG NGHỆ (KINETIC TYPOGRAPHY SCROLL REVEAL) -->
+    <section class="quotes-section" id="quotes">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">TRIẾT LÝ PHÁT TRIỂN</span>
+                <h2 class="section-title">5 Tuyên Ngôn Khai Phóng Tương Lai</h2>
+            </div>
+
+            <div class="quotes-list">
+
+                <!-- CÂU 1 -->
+                <div class="quote-card quote-reveal">
+                    <div class="quote-number">01</div>
+                    <div class="quote-content">
+                        <h3 class="quote-text">"Sáng tạo không biên giới, công nghệ vượt thời gian."</h3>
+                        <p class="quote-author">✦ Định hướng tầm nhìn tương lai</p>
+                    </div>
+                </div>
+
+                <!-- CÂU 2 -->
+                <div class="quote-card quote-reveal">
+                    <div class="quote-number">02</div>
+                    <div class="quote-content">
+                        <h3 class="quote-text">"Mỗi dòng mã là một nét vẽ nghệ thuật."</h3>
+                        <p class="quote-author">✦ Tinh thần Craftsmanship của lập trình viên</p>
+                    </div>
+                </div>
+
+                <!-- CÂU 3 -->
+                <div class="quote-card quote-reveal">
+                    <div class="quote-number">03</div>
+                    <div class="quote-content">
+                        <h3 class="quote-text">"Công nghệ vị nhân sinh, đánh thức mọi giác quan."</h3>
+                        <p class="quote-author">✦ Trải nghiệm người dùng lấy con người làm trọng tâm</p>
+                    </div>
+                </div>
+
+                <!-- CÂU 4 -->
+                <div class="quote-card quote-reveal">
+                    <div class="quote-number">04</div>
+                    <div class="quote-content">
+                        <h3 class="quote-text">"Dám tưởng tượng để định hình lại thực tại."</h3>
+                        <p class="quote-author">✦ Tư duy đột phá phá vỡ mọi quy chuẩn cũ</p>
+                    </div>
+                </div>
+
+                <!-- CÂU 5 -->
+                <div class="quote-card quote-reveal">
+                    <div class="quote-number">05</div>
+                    <div class="quote-content">
+                        <h3 class="quote-text">"Tương lai không chờ đợi, nó bắt đầu từ hôm nay."</h3>
+                        <p class="quote-author">✦ Hành động kiến tạo kỷ nguyên số</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KHU VỰC THỬ NGHIỆM NAM CHÂM (MAGNETIC PLAYGROUND) -->
+    <section class="playground-section" id="playground">
+        <div class="container text-center">
+            <span class="section-tag">PLAYGROUND KHÔNG GIAN TƯƠNG TÁC</span>
+            <h2 class="section-title">Khám Phá Hiệu Ứng Lực Hút Nam Châm</h2>
+            <p class="section-desc">Rê chuột lại gần các nút bên dưới trong phạm vi 100px để cảm nhận lực hút nam châm
+                vật lý.</p>
+
+            <div class="magnetic-grid">
+                <div class="magnetic-wrapper">
+                    <button class="magnetic-btn magnetic-secondary" data-strength="40">
+                        <span class="btn-text">✦ Khám Phá</span>
+                    </button>
+                </div>
+
+                <div class="magnetic-wrapper">
+                    <button class="magnetic-btn magnetic-glow" data-strength="50">
+                        <span class="btn-text">⚡ Năng Lượng</span>
+                    </button>
+                </div>
+
+                <div class="magnetic-wrapper">
+                    <button class="magnetic-btn magnetic-outline" data-strength="35">
+                        <span class="btn-text">🪐 Vũ Trụ Số</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER TỐI GIẢN -->
+    <footer class="studio-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Nexus Interactive Studio. Triển lãm kỹ thuật Frontend cao cấp.</p>
+            <div class="footer-links">
+                <a href="#hero" class="magnetic-target">Trở về đầu trang ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

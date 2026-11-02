@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Weather & Travel Planner | Lên Kế Hoạch Du Lịch Thông Minh</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Lớp phủ Background Thiên Nhiên -->
+    <div class="background-overlay"></div>
+
+    <div class="app-wrapper">
+        <!-- HEADER ỨNG DỤNG -->
+        <header class="app-header glass-card">
+            <div class="logo-area">
+                <span class="logo-icon">✈️</span>
+                <div>
+                    <h1>AI Weather & Travel Planner</h1>
+                    <p class="tagline">Trợ lý thời tiết & lịch trình du lịch thông minh</p>
+                </div>
+            </div>
+
+            <!-- ĐẾM NGƯỢC CHUYẾN ĐI (BƯỚC 5: TÍNH NĂNG MỞ RỘNG) -->
+            <div class="countdown-card">
+                <div class="countdown-inputs">
+                    <label for="departureDate">🗓️ Ngày khởi hành:</label>
+                    <input type="datetime-local" id="departureDate">
+                </div>
+                <div class="countdown-display" id="countdownDisplay">
+                    <span class="countdown-placeholder">Vui lòng chọn ngày đi để kích hoạt đếm ngược</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- LAYOUT CHÍNH: 2 CỘT GLASS MORPHISM (BƯỚC 1) -->
+        <main class="main-layout">
+
+            <!-- CỘT TRÁI: DỰ BÁO THỜI TIẾT (BƯỚC 1 & 2) -->
+            <section class="weather-column glass-card">
+                <div class="section-title-bar">
+                    <h2>🌤️ Thời Tiết Điểm Đến</h2>
+                    <!-- BƯỚC 2: SELECT CHỌN THÀNH PHỐ -->
+                    <div class="city-selector-wrap">
+                        <label for="citySelect" class="sr-only">Chọn thành phố</label>
+                        <select id="citySelect" class="glass-select">
+                            <option value="bienhoa">Đồng Nai - Biên Hòa</option>
+                            <option value="dalat">Lâm Đồng - Đà Lạt</option>
+                            <option value="vungtau">Bà Rịa - Vũng Tàu</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- THẺ THỜI TIẾT CHÍNH -->
+                <div class="weather-hero">
+                    <div class="weather-main-icon" id="weatherIcon">⛅</div>
+                    <div class="weather-temp-wrap">
+                        <span class="weather-temp" id="weatherTemp">24°C</span>
+                        <span class="weather-condition" id="weatherCondition">Nhiều mây, se lạnh</span>
+                    </div>
+                </div>
+
+                <!-- CÁC THÔNG SỐ CHI TIẾT -->
+                <div class="weather-details-grid">
+                    <div class="detail-item">
+                        <span class="detail-icon">💧</span>
+                        <div class="detail-info">
+                            <span class="detail-label">Độ ẩm</span>
+                            <span class="detail-value" id="weatherHumidity">75%</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">💨</span>
+                        <div class="detail-info">
+                            <span class="detail-label">Gió</span>
+                            <span class="detail-value" id="weatherWind">12 km/h</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">☀️</span>
+                        <div class="detail-info">
+                            <span class="detail-label">Chỉ số UV</span>
+                            <span class="detail-value" id="weatherUv">Trung bình</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🌡️</span>
+                        <div class="detail-info">
+                            <span class="detail-label">Cảm giác như</span>
+                            <span class="detail-value" id="weatherFeelsLike">23°C</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BƯỚC 5: GỢI Ý TRANG PHỤC THÔNG MINH (SMART OUTFIT SUGGESTION) -->
+                <div class="smart-outfit-box" id="smartOutfitBox">
+                    <div class="outfit-header">
+                        <span>💡 GỢI Ý TRANG PHỤC HÔM NAY</span>
+                    </div>
+                    <p id="outfitAdvice" class="outfit-text">
+                        Thời tiết mát mẻ, nên mang theo áo khoác mỏng và giày đi bộ thoải mái.
+                    </p>
+                </div>
+
+                <!-- PHẦN MÔ TẢ ĐỊA ĐIỂM TỪ TRAVEL BLOGGER -->
+                <div class="blogger-corner">
+                    <h3>✍️ Góc Travel Blogger</h3>
+                    <div class="blogger-card" id="bloggerCard">
+                        <h4 id="bloggerPlaceTitle">Hồ Xuân Hương (Đà Lạt)</h4>
+                        <p id="bloggerPlaceDesc">
+                            Viên ngọc xanh thơ mộng giữa lòng phố núi, nơi lý tưởng để đạp vịt ngắm hoàng hôn lãng mạn
+                            và thưởng thức ly sữa đậu nành nóng hổi ven hồ. Hãy dậy thật sớm để săn sương mai mờ ảo và
+                            có những bức ảnh check-in cực phẩm!
+                        </p>
+                        <div class="blogger-tags" id="bloggerTags">
+                            <span class="tag">📸 Check-in sống ảo</span>
+                            <span class="tag">☕ Cà phê ven hồ</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CỘT PHẢI: QUẢN LÝ LỊCH TRÌNH DU LỊCH (BƯỚC 1, 3, 4, 5) -->
+            <section class="itinerary-column glass-card">
+                <div class="section-title-bar">
+                    <h2>🗺️ Lịch Trình Khám Phá</h2>
+                    <div class="itinerary-counter-badge" id="itineraryCounterBadge">0 địa điểm</div>
+                </div>
+
+                <!-- FORM NHẬP ĐỊA ĐIỂM & THỜI GIAN (BƯỚC 3) -->
+                <form id="itineraryForm" class="itinerary-input-card">
+                    <div class="form-row">
+                        <div class="input-field-group place-input-group">
+                            <label for="placeInput">📍 Địa điểm muốn ghé:</label>
+                            <input type="text" id="placeInput"
+                                placeholder="Ví dụ: Ghé thăm Thác Giang Điền, Thưởng thức Bánh khọt Gốc Vú Sữa..."
+                                autocomplete="off" required>
+                        </div>
+                        <div class="input-field-group time-input-group">
+                            <label for="timeInput">⏰ Thời gian dự kiến:</label>
+                            <input type="time" id="timeInput" required>
+                        </div>
+                    </div>
+                    <div class="form-actions-row">
+                        <button type="submit" class="btn btn-primary" id="addPlaceBtn">
+                            <span>➕</span> Thêm vào lịch trình
+                        </button>
+                    </div>
+                </form>
+
+                <!-- DANH SÁCH LỊCH TRÌNH CÓ HIỆU ỨNG TRANSITION (BƯỚC 3) -->
+                <div class="itinerary-list-container">
+                    <ul id="itineraryList" class="itinerary-list">
+                        <!-- Dynamic elements will be rendered by JavaScript -->
+                    </ul>
+
+                    <!-- Trạng thái trống (Empty State) -->
+                    <div id="itineraryEmpty" class="itinerary-empty">
+                        <div class="empty-icon">🎒</div>
+                        <h4>Chưa có địa điểm nào trong lịch trình!</h4>
+                        <p>Hãy chọn thành phố và thêm các địa điểm bạn yêu thích vào ô bên trên nhé.</p>
+                    </div>
+                </div>
+
+                <!-- BƯỚC 5: XUẤT DỮ LIỆU RA FILE TEXT (EXPORT DATA VIA BLOB) -->
+                <div class="itinerary-footer">
+                    <div class="footer-info">
+                        <span>Tiến độ: <strong id="visitedCount">0</strong> / <span id="totalCount">0</span> đã
+                            đến</span>
+                    </div>
+                    <div class="footer-btn-group">
+                        <button id="clearAllBtn" class="btn btn-outline-danger" title="Xóa toàn bộ lịch trình">
+                            🗑️ Xóa hết
+                        </button>
+                        <button id="exportFileBtn" class="btn btn-export"
+                            title="Tải xuống danh sách dưới dạng file .txt">
+                            📥 Xuất lịch trình (.txt)
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

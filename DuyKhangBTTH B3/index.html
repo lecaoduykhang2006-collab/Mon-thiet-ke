@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Sự Kiện | AI Workshop 2026: AI & Future Careers</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <!-- CARD ĐĂNG KÝ (PHONG CÁCH TỐI GIẢN - MINIMALIST) -->
+        <div class="registration-card">
+
+            <!-- HEADER WORKSHOP & NỘI DUNG MARKETING -->
+            <div class="card-header">
+                <div class="event-badge">SỰ KIỆN CÔNG NGHỆ ĐỈNH CAO 2026</div>
+                <h1 class="event-title">AI & Future Careers: Kiến Tạo Tương Lai Cùng Trí Tuệ Nhân Tạo</h1>
+                <p class="event-desc">
+                    Làm chủ các công cụ AI thế hệ mới, tối ưu hóa 300% hiệu suất học tập và xây dựng lợi thế cạnh tranh
+                    vượt trội trong thị trường việc làm kỷ nguyên số.
+                </p>
+
+                <div class="event-meta">
+                    <div class="meta-item">📅 <strong>20/12/2026</strong></div>
+                    <div class="meta-item">⏰ <strong>08:30 - 11:30</strong></div>
+                    <div class="meta-item">📍 <strong>Hội trường Grand Hall & Online</strong></div>
+                </div>
+            </div>
+
+            <!-- FORM ĐĂNG KÝ (BƯỚC 1 & 2) -->
+            <form id="registrationForm" class="registration-form" novalidate>
+
+                <!-- TRƯỜNG: HỌ VÀ TÊN -->
+                <div class="form-group" id="group-fullname">
+                    <label for="fullname">Họ và Tên <span class="required">*</span></label>
+                    <div class="input-wrap">
+                        <span class="input-icon">👤</span>
+                        <input type="text" id="fullname" name="Name" placeholder="Ví dụ: Nguyễn Văn An"
+                            autocomplete="name">
+                    </div>
+                    <span class="error-msg" id="error-fullname"></span>
+                </div>
+
+                <!-- TRƯỜNG: EMAIL -->
+                <div class="form-group" id="group-email">
+                    <label for="email">Địa chỉ Email <span class="required">*</span></label>
+                    <div class="input-wrap">
+                        <span class="input-icon">✉️</span>
+                        <input type="email" id="email" name="Email" placeholder="Ví dụ: nguyenvanan@gmail.com"
+                            autocomplete="email">
+                    </div>
+                    <span class="error-msg" id="error-email"></span>
+                </div>
+
+                <!-- TRƯỜNG: SỐ ĐIỆN THOẠI -->
+                <div class="form-group" id="group-phone">
+                    <label for="phone">Số điện thoại <span class="required">*</span></label>
+                    <div class="input-wrap">
+                        <span class="input-icon">📱</span>
+                        <input type="tel" id="phone" name="Phone" placeholder="Ví dụ: 0912345678 (10 chữ số)"
+                            autocomplete="tel" maxlength="10">
+                    </div>
+                    <span class="error-msg" id="error-phone"></span>
+                </div>
+
+                <!-- TRƯỜNG: LOẠI VÉ (SELECT) -->
+                <div class="form-group" id="group-ticket">
+                    <label for="ticketType">Loại vé tham gia <span class="required">*</span></label>
+                    <div class="input-wrap">
+                        <span class="input-icon">🎟️</span>
+                        <select id="ticketType" name="TicketType">
+                            <option value="" disabled selected>-- Chọn loại vé phù hợp --</option>
+                            <option value="Student">Vé Sinh Viên (Miễn phí - Cần xuất trình thẻ SV)</option>
+                            <option value="Standard">Vé Tiêu Chuẩn (199.000 VNĐ - Kèm tài liệu Workshop)</option>
+                            <option value="VIP">Vé VIP (499.000 VNĐ - Chỗ ngồi hàng đầu, Tiệc trà & Q&A cùng Diễn giả)
+                            </option>
+                        </select>
+                    </div>
+                    <span class="error-msg" id="error-ticket"></span>
+                </div>
+
+                <!-- CẤU HÌNH ĐƯỜNG DẪN GOOGLE APPS SCRIPT (BƯỚC 3 & 4) -->
+                <div class="script-config-box">
+                    <div class="config-toggle" id="configToggle">
+                        ⚙️ <span>Cấu hình kết nối Google Sheets (Tùy chọn)</span>
+                    </div>
+                    <div class="config-content" id="configContent">
+                        <label for="scriptUrlInput">Google Apps Script Web App URL:</label>
+                        <input type="url" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/.../exec">
+                        <p class="config-note">
+                            Nếu để trống ô này, hệ thống sẽ tự động kích hoạt <strong>Chế độ Giả lập (Demo
+                                Mode)</strong> với phản hồi sau 1.5 giây để bạn kiểm tra giao diện và luồng xử lý.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- NÚT GỬI ĐĂNG KÝ (SUBMIT BUTTON) -->
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <span class="btn-text">Xác Nhận Đăng Ký Ngay</span>
+                    <span class="btn-spinner" id="btnSpinner"></span>
+                </button>
+
+                <p class="form-privacy">
+                    🔒 Cam kết bảo mật thông tin. Dữ liệu của bạn được đồng bộ trực tiếp vào hệ thống danh sách khách
+                    mời.
+                </p>
+            </form>
+
+            <!-- THÔNG BÁO THÀNH CÔNG (SUCCESS STATE) -->
+            <div id="successCard" class="success-card">
+                <div class="success-icon">🎉</div>
+                <h2>Đăng Ký Thành Công!</h2>
+                <p class="success-msg" id="successDetailMsg">
+                    Chúc mừng <strong><span id="registeredName"></span></strong> đã đăng ký thành công vé tham dự sự
+                    kiện <strong>AI Workshop 2026</strong>.
+                </p>
+
+                <div class="success-summary">
+                    <div class="summary-row">
+                        <span>Loại vé:</span>
+                        <strong id="registeredTicket"></strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Email xác nhận:</span>
+                        <strong id="registeredEmail"></strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Số điện thoại:</span>
+                        <strong id="registeredPhone"></strong>
+                    </div>
+                </div>
+
+                <div class="success-reminder">
+                    📩 <strong>Lưu ý:</strong> Vui lòng kiểm tra hòm thư đến (hoặc hộp thư Spam) để nhận email hướng dẫn
+                    và chuẩn bị laptop cá nhân trước ngày diễn ra sự kiện.
+                </div>
+
+                <button id="registerAnotherBtn" class="btn-outline">
+                    Đăng ký thêm người khác
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
